@@ -37,7 +37,7 @@
                 <version>0.0.3</version>
                 <configuration>
                     <mainClass>elitonlais.App</mainClass>
-                    <launcher>lauch.sh</launcher>
+                    <launcher>launch.sh</launcher>
                     <compress>2</compress>
                     <jlinkZipName>MinAFD</jlinkZipName>
                     <jlinkImageName>MinAFD</jlinkImageName>
