@@ -20,11 +20,6 @@
             <artifactId>javafx-fxml</artifactId>
             <version>14</version>
         </dependency>
-        <dependency>
-            <groupId>guru.nidi</groupId>
-            <artifactId>graphviz-java</artifactId>
-            <version>0.17.0</version>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -42,6 +37,11 @@
                 <version>0.0.3</version>
                 <configuration>
                     <mainClass>elitonlais.App</mainClass>
+                    <launcher>lauch.sh</launcher>
+                    <compress>2</compress>
+                    <jlinkZipName>MinAFD</jlinkZipName>
+                    <jlinkImageName>MinAFD</jlinkImageName>
+                    <includePathExceptionsInClasspath>true</includePathExceptionsInClasspath>
                 </configuration>
             </plugin>
         </plugins>

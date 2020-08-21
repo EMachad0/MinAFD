@@ -26,7 +26,7 @@ public class StepController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnEnd.setOnAction(event -> {
-            afd.geraPng();
+            // afd.geraPng();
 
             try {
                 App.setRoot("img");

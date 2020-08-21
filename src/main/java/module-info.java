@@ -1,7 +1,6 @@
 module elitonlais {
     requires javafx.controls;
     requires javafx.fxml;
-    requires graphviz.java;
 
     opens elitonlais to javafx.fxml;
     opens elitonlais.controller to javafx.fxml;
