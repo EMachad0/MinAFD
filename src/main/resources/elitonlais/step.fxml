@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.StepController">
+    <Button fx:id="btnAnte" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="50" prefWidth="50"
+            text="A"/>
+    <Label fx:id="labelStepNumber" alignment="CENTER" layoutX="80.0" layoutY="15.0" prefHeight="50" prefWidth="50"
+           text="0"/>
+    <Button fx:id="btnNext" layoutX="145.0" layoutY="15.0" mnemonicParsing="false" prefHeight="50" prefWidth="50"
+            text="N"/>
+    <Button fx:id="btnEnd" layoutX="1152.0" layoutY="719.0" mnemonicParsing="false" prefHeight="35.0"
+            prefWidth="200.0" text="Terminar">
+        <font>
+            <Font name="Calibri" size="18.0"/>
+        </font>
+    </Button>
+    <Label fx:id="labelMainText" alignment="TOP_LEFT" layoutX="105.0" layoutY="106.0" prefHeight="500.0"
+           prefWidth="536.0" text="Label"/>
+    <ScrollPane layoutX="683.0" layoutY="106.0" prefHeight="500.0" prefWidth="536.0">
+        <GridPane fx:id="gridPane" prefHeight="171.0" prefWidth="239.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+        </GridPane>
+    </ScrollPane>
+</AnchorPane>
