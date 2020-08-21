@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97f1d308-d9cc-45a4-9d08-0ea82558bc09" name="Default Changelist" comment="" />
+    <list default="true" id="97f1d308-d9cc-45a4-9d08-0ea82558bc09" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -41,6 +47,17 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="run" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -79,6 +96,7 @@
       <updated>1598021606408</updated>
       <workItem from="1598021611177" duration="724000" />
       <workItem from="1598024106165" duration="1357000" />
+      <workItem from="1598025498610" duration="304000" />
     </task>
     <servers />
   </component>
@@ -99,6 +117,14 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="288" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1598021778715" />
+    <state x="812" y="438" width="278" height="258" key="Github.ShareDialog" timestamp="1598025690783">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="812" y="438" width="278" height="258" key="Github.ShareDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1598025690783" />
+    <state x="687" y="225" width="535" height="627" key="Github.UntrackedFilesDialog" timestamp="1598025733809">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="687" y="225" width="535" height="627" key="Github.UntrackedFilesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1598025733808" />
     <state width="1874" height="288" key="GridCell.Tab.0.bottom" timestamp="1598025466425">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
