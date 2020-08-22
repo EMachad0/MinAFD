@@ -46,24 +46,21 @@ public class StepController implements Initializable {
 
         // y axis
         for (int i = 1; i < estados.size(); i++) {
-            Label l = Grid.makeStandardLabel();
-            l.setText(estados.get(i));
+            Label l = new Label(estados.get(i));
             l.setId("state");
             grid.add(l, i-1, 0);
         }
 
         // x axis
         for (int i = 1; i < estados.size(); i++) {
-            Label l = Grid.makeStandardLabel();
-            l.setText(estados.get(i-1));
+            Label l = new Label(estados.get(i-1));
             l.setId("state");
             grid.add(l, estados.size()-1, i);
         }
 
         for (int i = 0; i < estados.size()-1; i++) {
             for (int j = 1; j <= i+1; j++) {
-                Label l = Grid.makeStandardLabel();
-                l.setText("["+ i + " " + j + "]");
+                Label l = new Label("["+ i + " " + j + "]");
                 grid.add(l, i, j);
             }
         }

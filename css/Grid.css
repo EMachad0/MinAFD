@@ -1,12 +1,22 @@
+@font-face {
+    font-family: JetBrainsMono;
+    src: url('../fonts/JetBrainsMono-Regular.ttf');
+}
+
 .scroll-pane {
     -fx-border-color: transparent;
     -fx-background-color: transparent;
 }
 
-.label {
+.label, .text-field {
     -fx-background-color: white;
     -fx-border-color: black;
     -fx-border-width: 2;
+    -fx-pref-width: 50;
+    -fx-pref-height: 50;
+    -fx-alignment: center;
+    -fx-font-size: 18;
+    -fx-font-family: JetBrainsMono;
 }
 
 #state {

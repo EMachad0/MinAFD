@@ -1,17 +1,10 @@
 package elitonlais.model;
 
-import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Font;
 
 public class Grid {
-
-    private static final double CELLSIZE = 50;
-    private static final Font FONT = new Font("Cambria", 18);
 
     private final int size;
     private final GridPane gridPane;
@@ -41,21 +34,5 @@ public class Grid {
     public void setText(String text, int i, int j) {
         Node node = getNode(i, j);
         if (node instanceof Labeled) ((Labeled) node).setText(text);
-    }
-
-    public static Label makeStandardLabel() {
-        Label l = new Label();
-        l.setPrefSize(CELLSIZE, CELLSIZE);
-        l.setAlignment(Pos.CENTER);
-        l.setFont(FONT);
-        return l;
-    }
-
-    public static TextField makeStandardTextField() {
-        TextField t = new TextField();
-        t.setPrefSize(CELLSIZE, CELLSIZE);
-        t.setAlignment(Pos.CENTER);
-        t.setFont(FONT);
-        return t;
     }
 }
