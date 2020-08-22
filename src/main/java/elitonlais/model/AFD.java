@@ -1,7 +1,6 @@
 package elitonlais.model;
 
 import java.util.Set;
-import java.util.TreeSet;
 
 public class AFD {
 
@@ -35,7 +34,7 @@ public class AFD {
     }
 
     public Set<String> getEstados() {
-        return new TreeSet<>(grafo.getNodes());
+        return grafo.getNodes();
     }
 
     public Grafo getGrafo() {
@@ -43,7 +42,7 @@ public class AFD {
     }
 
     //    public void geraPng() {
-//        Map<String, Node> nodes = new TreeMap<>();
+//        Map<String, Node> nodes = new TreeMap<>(new StringComparator());
 //        for (String a : grafo.getNodes()) {
 //            if (estadosFinais.contains(a)) nodes.put(a, node(a).with(Label.nodeName(), Shape.DOUBLE_CIRCLE));
 //            else nodes.put(a, node(a).with(Label.nodeName(), Shape.CIRCLE));

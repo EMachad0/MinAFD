@@ -1,5 +1,7 @@
 package elitonlais.model;
 
+import elitonlais.controller.StringSizeFirstComparator;
+
 import java.util.*;
 
 public class Grafo {
@@ -10,15 +12,15 @@ public class Grafo {
     private final Map<String, Map<String, String>> adj;
 
     public Grafo() {
-        nodes = new TreeSet<>();
-        adj = new TreeMap<>();
+        nodes = new TreeSet<>(new StringSizeFirstComparator());
+        adj = new TreeMap<>(new StringSizeFirstComparator());
         edges = new TreeMap<>();
     }
 
     public void addNode(String s) {
         size++;
         nodes.add(s);
-        adj.put(s, new TreeMap<>());
+        adj.put(s, new TreeMap<>(new StringSizeFirstComparator()));
     }
 
     public void addNode(List<String> list) {
@@ -39,7 +41,7 @@ public class Grafo {
         if (!containNode(b)) addNode(b);
 
         Pair<String, String> p = new Pair<>(a, b);
-        if (!edges.containsKey(p)) edges.put(p, new TreeSet<>());
+        if (!edges.containsKey(p)) edges.put(p, new TreeSet<>(new StringSizeFirstComparator()));
         edges.get(p).add(v);
         adj.get(a).put(v, b);
     }
@@ -83,10 +85,10 @@ public class Grafo {
     }
 
     public Set<String> getNodes() {
-        return new TreeSet<>(nodes);
+        return nodes;
     }
 
     public Map<Pair<String, String>, Set<String>> getEdges() {
-        return new TreeMap<>(edges);
+        return edges;
     }
 }

@@ -77,7 +77,8 @@ public class AFDInputController implements Initializable {
             String estadoInicial = fieldEstadoInicial.getText();
 
             String[] arrEstadosFinais = fieldEstadosFinais.getText().split(" ");
-            Set<String> estadosFinais = new TreeSet<>(Arrays.asList(arrEstadosFinais));
+            Set<String> estadosFinais = new TreeSet<>(new StringSizeFirstComparator());
+            estadosFinais.addAll(Arrays.asList(arrEstadosFinais));
 
             AFD afd = new AFD(estadoInicial, alfa, grafo, estadosFinais);
 
