@@ -1,0 +1,14 @@
+.scroll-pane {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.label {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}
+
+#state {
+    -fx-background-color: #9a8d3d;
+}

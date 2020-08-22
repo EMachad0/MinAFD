@@ -1,6 +1,7 @@
 package elitonlais.model;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 public class AFD {
 
@@ -33,7 +34,15 @@ public class AFD {
         return terminouPalavra && estadosFinais.contains(estado);
     }
 
-//    public void geraPng() {
+    public Set<String> getEstados() {
+        return new TreeSet<>(grafo.getNodes());
+    }
+
+    public Grafo getGrafo() {
+        return grafo;
+    }
+
+    //    public void geraPng() {
 //        Map<String, Node> nodes = new TreeMap<>();
 //        for (String a : grafo.getNodes()) {
 //            if (estadosFinais.contains(a)) nodes.put(a, node(a).with(Label.nodeName(), Shape.DOUBLE_CIRCLE));
