@@ -3,15 +3,20 @@ package elitonlais.controller;
 import elitonlais.App;
 import elitonlais.model.AFD;
 import elitonlais.model.Grafo;
-import javafx.beans.property.ReadOnlyStringWrapper;
+import elitonlais.model.Grid;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.Arrays;
+import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class AFDInputController implements Initializable {
 
@@ -21,59 +26,72 @@ public class AFDInputController implements Initializable {
     @FXML public TextField fieldEstadosFinais;
     @FXML public Button btnTabela;
     @FXML public Button btnSimplifica;
-    @FXML public TableView<Integer> myTable;
+    @FXML public GridPane gridPane;
 
-    private String alfa;
-    private Grafo grafo;
+    private final Set<Character> alfa = new TreeSet<>();
+    private Grid grid;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnTabela.setOnAction(event -> {
-            alfa = fieldAlfabeto.getText();
             int numEstados = Integer.parseInt(fieldNumState.getText());
-
-            grafo = new Grafo();
-            grafo.addNode(numEstados);
 
             System.out.println("numEstados: " + numEstados);
             System.out.println("alfa: " + alfa);
 
-            // Table
-            myTable.getItems().clear();
-            myTable.getColumns().clear();
-
-            myTable.setEditable(true);
-            myTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
-            for (int i = 0; i < numEstados; i++) myTable.getItems().add(i);
-
-            List<String> est = new ArrayList<>();
-            for (int j = 0; j < numEstados; j++) est.add("q" + j);
-
-            TableColumn <Integer, String> indices = new TableColumn<>();
-            indices.setCellValueFactory(cellData -> {
-                Integer rowIndex = cellData.getValue();
-                return new ReadOnlyStringWrapper(est.get(rowIndex));
-            });
-            myTable.getColumns().add(indices);
-
-            for (int i = 0; i < alfa.length(); i++) {
-                TableColumn<Integer, String> column = new TableColumn<>(String.valueOf(alfa.charAt(i)));
-                column.setCellValueFactory(cellData -> new ReadOnlyStringWrapper());
-                column.setCellFactory(TextFieldTableCell.forTableColumn());
-
-                column.setOnEditCommit(evt -> {
-                    String a = indices.getCellData(evt.getRowValue());
-                    String v = evt.getTableColumn().getText();
-                    String b = evt.getNewValue();
-                    grafo.addDirEdge(a, b, v);
+            // Grid
+            grid = new Grid(gridPane, numEstados+1);
+            for (int i = 0; i < numEstados; i++) {
+                TextField tf1 = new TextField(), tf2 = new TextField();
+                tf1.setText("Q" + i);
+                tf1.setId("state");
+                tf2.setText("Q" + i);
+                tf2.setId("state");
+                tf1.textProperty().addListener((observable, oldValue, newValue) -> {
+                    if (tf1.isFocused()) tf2.setText(newValue);
                 });
+                tf2.textProperty().addListener((observable, oldValue, newValue) -> {
+                    if (tf2.isFocused()) tf1.setText(newValue);
+                });
+                grid.add(tf1, i+1, 0);
+                grid.add(tf2, 0, i+1);
+            }
 
-                myTable.getColumns().add(column);
+            for (int i = 1; i <= numEstados; i++) {
+                for (int j = 1; j <= numEstados; j++) {
+                    TextField tf = new TextField();
+                    tf.textProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue.length() > oldValue.length()) {
+                            char novo = newValue.charAt(newValue.length()-1);
+                            if (tf.isFocused()) {
+                                fieldNumState.requestFocus();
+                                if (!alfa.contains(novo) || oldValue.indexOf(novo) != -1) tf.setText(oldValue);
+                                tf.requestFocus();
+                            }
+                        }
+                    });
+                    grid.add(tf, i, j);
+                }
             }
         });
 
         btnSimplifica.setOnAction(event -> {
+            Grafo grafo = new Grafo();
+
+            for (int i = 1; i < grid.getSize(); i++) grafo.addNode(((TextField) grid.getNode(i, 0)).getText());
+
+            for (int i = 1; i < grid.getSize(); i++) {
+                for (int j = 1; j < grid.getSize(); j++) {
+                    String a = ((TextField) grid.getNode(i, 0)).getText();
+                    String b = ((TextField) grid.getNode(0, j)).getText();
+                    String vs = ((TextField) grid.getNode(i, j)).getText();
+                    for (char c : vs.toCharArray()) {
+                        grafo.addDirEdge(a, b, c);
+                    }
+                }
+            }
+            System.out.println(grafo);
+
             String estadoInicial = fieldEstadoInicial.getText();
 
             String[] arrEstadosFinais = fieldEstadosFinais.getText().split(" ");
