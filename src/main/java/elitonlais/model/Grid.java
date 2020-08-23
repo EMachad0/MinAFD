@@ -14,6 +14,7 @@ public class Grid {
         this.size = size;
         this.gridPane = gridPane;
 
+        gridPane.getChildren().clear();
         matriz = new Node[size][size];
     }
 
@@ -34,5 +35,9 @@ public class Grid {
     public void setText(String text, int i, int j) {
         Node node = getNode(i, j);
         if (node instanceof Labeled) ((Labeled) node).setText(text);
+    }
+
+    public int getSize() {
+        return size;
     }
 }
