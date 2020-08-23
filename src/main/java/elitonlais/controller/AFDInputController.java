@@ -6,6 +6,7 @@ import elitonlais.model.Grafo;
 import elitonlais.model.Grid;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
@@ -13,10 +14,7 @@ import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class AFDInputController implements Initializable {
 
@@ -33,6 +31,21 @@ public class AFDInputController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        fieldNumState.setTextFormatter(new TextFormatter<>(c -> (c.getControlNewText().matches("([1-9][0-9]*)?")) ? c : null));
+        fieldAlfabeto.setTextFormatter(new TextFormatter<>(c -> (c.getControlNewText().matches("([A-Z]|[a-z]|[0-9])*")) ? c : null));
+        fieldAlfabeto.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (fieldAlfabeto.isFocused() && newValue.length() < oldValue.length()) {
+                alfa.remove(oldValue.charAt(oldValue.length()-1));
+            } else if (fieldAlfabeto.isFocused() && newValue.length() > oldValue.length()) {
+                char novo = newValue.charAt(newValue.length()-1);
+                fieldNumState.requestFocus();
+                if (alfa.contains(novo)) fieldAlfabeto.setText(oldValue);
+                else alfa.add(novo);
+                fieldAlfabeto.requestFocus();
+            }
+            // System.out.println(alfa);
+        });
+
         btnTabela.setOnAction(event -> {
             int numEstados = Integer.parseInt(fieldNumState.getText());
 
@@ -92,19 +105,40 @@ public class AFDInputController implements Initializable {
             }
             System.out.println(grafo);
 
+            boolean validEI = true;
             String estadoInicial = fieldEstadoInicial.getText();
+            if (!grafo.containNode(estadoInicial)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("O Estado Inicial " + estadoInicial +" é Invalido");
+                alert.show();
+                validEI = false;
+            }
 
             String[] arrEstadosFinais = fieldEstadosFinais.getText().split(" ");
             Set<String> estadosFinais = new TreeSet<>(new StringSizeFirstComparator());
             estadosFinais.addAll(Arrays.asList(arrEstadosFinais));
 
-            AFD afd = new AFD(estadoInicial, alfa, grafo, estadosFinais);
+            boolean validEF = true;
+            StringBuilder alertMsg = new StringBuilder();
+            for (String s : estadosFinais) {
+                if (!grafo.containNode(s)) {
+                    validEF = false;
+                    alertMsg.append(s).append(" ");
+                }
+            }
+            if (!validEF) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Os estados finais " + alertMsg + "Invalido");
+                alert.show();
+            }
 
-            // afd.geraPng();
-            try {
-                App.showStepView(afd);
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (validEI && validEF) {
+                AFD afd = new AFD(estadoInicial, alfa, grafo, estadosFinais);
+                try {
+                    App.showStepView(afd);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
