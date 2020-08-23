@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.AFDInputController">
+    <Label layoutX="50.0" layoutY="162.0" prefHeight="25.0" prefWidth="150.0" text="Alfabeto" textAlignment="CENTER" />
+    <Label layoutX="50.0" layoutY="203.0" prefHeight="25.0" prefWidth="150.0" text="Numero De Estados" textAlignment="CENTER" />
+    <TextField fx:id="fieldAlfabeto" layoutX="220.0" layoutY="161.0" prefHeight="25.0" prefWidth="390.0" />
+    <TextField fx:id="fieldNumState" layoutX="220.0" layoutY="202.0" prefHeight="25.0" prefWidth="390.0" />
+    <Button fx:id="btnTabela" layoutX="220.0" layoutY="246.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Gerar Tabela">
+        <font>
+            <Font name="Calibri" size="18.0" />
+        </font>
+    </Button>
+    <ScrollPane layoutX="683.0" layoutY="106.0" prefHeight="600.0" prefWidth="600.0" stylesheets="@/css/Grid.css">
+        <GridPane fx:id="gridPane" />
+    </ScrollPane>
+    <Label layoutX="50.0" layoutY="372.0" prefHeight="25.0" prefWidth="150.0" text="Estado Inicial" textAlignment="CENTER" />
+    <Label layoutX="50.0" layoutY="417.0" prefHeight="25.0" prefWidth="150.0" text="Estados Finais" textAlignment="CENTER" />
+    <TextField fx:id="fieldEstadoInicial" layoutX="220.0" layoutY="371.0" prefHeight="25.0" prefWidth="390.0" />
+    <TextField fx:id="fieldEstadosFinais" layoutX="220.0" layoutY="416.0" prefHeight="25.0" prefWidth="390.0" />
+    <Button fx:id="btnSimplifica" layoutX="220.0" layoutY="463.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="200.0" text="Simplificar" />
+</AnchorPane>
