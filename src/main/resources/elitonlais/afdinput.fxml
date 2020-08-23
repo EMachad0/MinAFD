@@ -15,7 +15,7 @@
             <Font name="Calibri" size="18.0" />
         </font>
     </Button>
-    <ScrollPane layoutX="683.0" layoutY="106.0" prefHeight="600.0" prefWidth="600.0" stylesheets="@../../../css/Grid.css">
+    <ScrollPane layoutX="683.0" layoutY="106.0" prefHeight="600.0" prefWidth="600.0" stylesheets="@/css/Grid.css">
         <GridPane fx:id="gridPane" />
     </ScrollPane>
     <Label layoutX="50.0" layoutY="372.0" prefHeight="25.0" prefWidth="150.0" text="Estado Inicial" textAlignment="CENTER" />

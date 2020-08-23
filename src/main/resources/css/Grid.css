@@ -1,6 +1,6 @@
 @font-face {
     font-family: JetBrainsMono;
-    src: url('../fonts/JetBrainsMono-Regular.ttf');
+    src: url('/fonts/JetBrainsMono-Regular.ttf');
 }
 
 .scroll-pane {
