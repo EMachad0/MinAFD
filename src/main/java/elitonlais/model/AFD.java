@@ -5,11 +5,11 @@ import java.util.Set;
 public class AFD {
 
     private final String estadoInicial;
-    private final String alfabeto;
+    private final Set<Character> alfabeto;
     private final Grafo grafo;
     private final Set<String> estadosFinais;
 
-    public AFD(String estadoInicial, String alfabeto, Grafo grafo, Set<String> estadosFinais) {
+    public AFD(String estadoInicial, Set<Character> alfabeto, Grafo grafo, Set<String> estadosFinais) {
         this.estadoInicial = estadoInicial;
         this.alfabeto = alfabeto;
         this.grafo = grafo;
@@ -22,7 +22,7 @@ public class AFD {
         for (int i = 0; i < palavra.length(); i++) {
             System.out.println(estado);
 
-            String transicao = String.valueOf(palavra.charAt(i));
+            char transicao = palavra.charAt(i);
             if (!grafo.containTransition(estado, transicao)) {
                 terminouPalavra = false;
                 break;
