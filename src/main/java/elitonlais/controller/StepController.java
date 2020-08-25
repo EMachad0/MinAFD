@@ -74,6 +74,7 @@ public class StepController implements Initializable {
     }
 
     public void atualiza(int atual) {
+        atual = Math.max(0, Math.min(minimizador.getQuantPasso()-1, atual));
         labelStepNumber.setText(String.valueOf(atual));
 
         List<String> estados = new ArrayList<>(afd.getEstados());

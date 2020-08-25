@@ -207,6 +207,10 @@ public class Minimizador {
         return afd;
     }
 
+    public int getQuantPasso() {
+        return passoListas.size();
+    }
+
     public static void marcaVisto(Set<String> visto, Grafo g, String n) {
         visto.add(n);
         for (char c : g.getAdj().get(n).keySet()) {
