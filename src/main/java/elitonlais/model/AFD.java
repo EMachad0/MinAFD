@@ -62,6 +62,10 @@ public class AFD {
         return alfabeto;
     }
 
+    public String getEstadoInicial() {
+        return estadoInicial;
+    }
+
     public void geraPng() {
         Map<String, Node> nodes = new TreeMap<>();
         for (String a : grafo.getNodes()) {

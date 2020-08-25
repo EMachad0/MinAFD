@@ -1,10 +1,12 @@
 package elitonlais.model;
 
+import elitonlais.controller.StringSizeFirstComparator;
+
 import java.util.*;
 
 public class Minimizador {
 
-    private final AFD afd;
+    private AFD afd;
 
     private final List<String> passoTexto;
     private final List<Map<Pair<String, String>, String>> passoTabela;
@@ -104,6 +106,49 @@ public class Minimizador {
                 }
             }
         }
+
+        // Passo final
+        StringBuilder s = new StringBuilder("Unificando Estados:\n");
+        Grafo g = new Grafo();
+        Map <String, String> mapa = new TreeMap<>(new StringSizeFirstComparator());
+        for (int i = 0; i < estados.size(); i++) {
+            for (int j = i+1; j < estados.size(); j++) {
+                String qi = estados.get(i);
+                String qj = estados.get(j);
+                Pair<String, String> qiqj = new Pair<>(qi, qj);
+
+                if (m.get(qiqj).equals("")) {
+                    s.append("\t").append(qi).append(qj).append(": unificação dos estados ").append(qi).append(" e ").append(qj).append(";");
+                    g.addNode(qi + qj);
+                    mapa.put(qi, qi + qj);
+                    mapa.put(qj, qi + qj);
+                }
+            }
+        }
+
+        addPassoTabela(m);
+        addPassoListas(lista);
+        passoTexto.add(s.toString());
+
+        for (String estado : estados) {
+            if (!mapa.containsKey(estado)) g.addNode(estado);
+        }
+
+        for (Pair<String, String> pair : grafo.getEdges().keySet()) {
+            String a = pair.getFi();
+            if (mapa.containsKey(a)) a = mapa.get(a);
+            String b = pair.getSe();
+            if (mapa.containsKey(b)) b = mapa.get(b);
+            for (Character c : grafo.getEdges().get(pair)) {
+                g.addDirEdge(a, b, c);
+            }
+        }
+
+        String estadoInicial = mapa.getOrDefault(afd.getEstadoInicial(), afd.getEstadoInicial());
+        Set<String> estadosFinais = new TreeSet<>(new StringSizeFirstComparator());
+        for (String ef : afd.getEstadosFinais()) estadosFinais.add(mapa.getOrDefault(ef, ef));
+
+        afd = new AFD(estadoInicial, afd.getAlfabeto(), g, estadosFinais);
         System.out.println("Terminou");
     }
 
@@ -139,5 +184,9 @@ public class Minimizador {
 
     public Map<Pair<String, String>, List<Pair<String, String>>> getPassoListas(int i) {
         return passoListas.get(i);
+    }
+
+    public AFD getAFD() {
+        return afd;
     }
 }

@@ -36,7 +36,7 @@ public class StepController implements Initializable {
         btnNext.setOnAction(event -> atualiza(getPasso() + 1));
 
         btnEnd.setOnAction(event -> {
-            afd.geraPng();
+            minimizador.getAFD().geraPng();
 
             try {
                 App.setRoot("img");
