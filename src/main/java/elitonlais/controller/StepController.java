@@ -89,15 +89,10 @@ public class StepController implements Initializable {
 
         labelMainText.setText(mainText);
 
-        for (Pair<String, String> pair : m.keySet()) {
-            System.out.println(pair + ":" + m.get(pair));
-        }
-
         for (int i = 0; i < estados.size()-1; i++) {
             for (int j = 1; j <= i+1; j++) {
                 String qi = estados.get(i+1);
                 String qj = estados.get(j-1);
-                System.out.println(i + ", " + j + " -> " + qi + ", " + qj);
                 ((Labeled) grid.getNode(i, j)).setText(m.get(new Pair<>(qj, qi)));
             }
         }
