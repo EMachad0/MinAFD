@@ -23,15 +23,34 @@ public class Minimizador {
     }
 
     private void minimiza() {
-        List<String> estados = new ArrayList<>(afd.getEstados());
-        Set<String> finais = afd.getEstadosFinais();
-        Set<Character> alfa = afd.getAlfabeto();
         Grafo grafo = afd.getGrafo();
 
         Map<Pair<String, String>, List<Pair<String, String>>> lista = new TreeMap<>();
         Map<Pair<String, String>, String> m = new TreeMap<>();
 
         // passo 0
+        Set<String> visto = new TreeSet<>(new StringSizeFirstComparator());
+        marcaVisto(visto, grafo, afd.getEstadoInicial());
+
+        Set<String> praRemover = new TreeSet<>(new StringSizeFirstComparator());
+        praRemover.addAll(afd.getEstados());
+        praRemover.removeAll(visto);
+
+        StringBuilder s = new StringBuilder();
+        if (!praRemover.isEmpty()) {
+            s.append("Removendo estados inúteis:\n");
+            for (String e : praRemover) {
+                s.append("\tEstado ").append(e).append(" removido;\n");
+                grafo.removeNode(e);
+                afd.getEstadosFinais().remove(e);
+                System.out.println("Removido: " + e);
+            }
+            s.append('\n');
+        }
+
+        List<String> estados = new ArrayList<>(afd.getEstados());
+        Set<String> finais = afd.getEstadosFinais();
+
         for (int i = 0; i < estados.size(); i++) {
             for (int j = i+1; j < estados.size(); j++) {
                 String qi = estados.get(i);
@@ -47,12 +66,14 @@ public class Minimizador {
             }
         }
 
-        passoTexto.add("Marcação dos estados do tipo:\n" +
-                "{Estado final, Estado não final}");
+        s.append("Marcação dos estados do tipo:\n\t{Estado final, Estado não final}");
+        passoTexto.add(s.toString());
         addPassoTabela(m);
         addPassoListas(lista);
 
         // Passo 1..N:
+        Set<Character> alfa = afd.getAlfabeto();
+
         for (int i = 0; i < estados.size(); i++) {
             for (int j = i+1; j < estados.size(); j++) {
                 String qi = estados.get(i);
@@ -61,7 +82,7 @@ public class Minimizador {
 
                 if (m.get(qiqj).equals("")) {
                     // Novo Passo: Analisando par nao marcado
-                    String s = qiqj + ":\n";
+                    s = new StringBuilder(qiqj + ":\n");
 
                     for (Character c : alfa) {
                         String pi = grafo.getNode(qi, c);
@@ -70,41 +91,41 @@ public class Minimizador {
                         Pair<String, String> pipj = new Pair<>(pi, pj);
                         if (pi.compareTo(pj) > 0) pipj = pipj.swap();
 
-                        s += "Delta(" + qi + ", " + c + ") = " + pi + ";\n";
-                        s += "Delta(" + qj + ", " + c + ") = " + pj + ";\n";
+                        s.append("Delta(").append(qi).append(", ").append(c).append(") = ").append(pi).append(";\n");
+                        s.append("Delta(").append(qj).append(", ").append(c).append(") = ").append(pj).append(";\n");
 
                         if (pi.equals(pj)) {
-                            s += "Trivialmente equivalente\n";
+                            s.append("Trivialmente equivalente\n");
                         } else if (m.get(pipj).equals("X")) {
-                            s += "O par " + pipj + " é marcado\n";
-                            s += "Logo " + qiqj + " é marcado\n";
+                            s.append("O par ").append(pipj).append(" é marcado\n");
+                            s.append("Logo ").append(qiqj).append(" é marcado\n");
                             m.put(qiqj, "X");
 
                             if (lista.containsKey(qiqj)) {
-                                s += "Marcando lista de " + pipj + ":\n";
+                                s.append("Marcando lista de ").append(pipj).append(":\n");
                                 for (Pair<String, String> pair : lista.get(qiqj)) {
                                     m.put(pair, "X");
-                                    s += "\t" + pair + " for marcado!";
+                                    s.append("\t").append(pair).append(" for marcado!");
                                 }
                             }
                             break;
                         } else {
                             if (!lista.containsKey(pipj)) lista.put(pipj, new ArrayList<>());
                             if (!lista.get(pipj).contains(qiqj)) lista.get(pipj).add(qiqj);
-                            s += "O par " + pipj + " é não marcado\n";
-                            s += "Adicionando " + qiqj + " na lista de " + pipj + ";\n";
+                            s.append("O par ").append(pipj).append(" é não marcado\n");
+                            s.append("Adicionando ").append(qiqj).append(" na lista de ").append(pipj).append(";\n");
                         }
-                        s += '\n';
+                        s.append('\n');
                     }
                     addPassoTabela(m);
                     addPassoListas(lista);
-                    passoTexto.add(s);
+                    passoTexto.add(s.toString());
                 }
             }
         }
 
         // Passo final
-        StringBuilder s = new StringBuilder("Unificando Estados:\n");
+        s = new StringBuilder(new StringBuilder("Unificando Estados:\n"));
         Grafo g = new Grafo();
         Map <String, String> mapa = new TreeMap<>(new StringSizeFirstComparator());
         for (int i = 0; i < estados.size(); i++) {
@@ -114,7 +135,7 @@ public class Minimizador {
                 Pair<String, String> qiqj = new Pair<>(qi, qj);
 
                 if (m.get(qiqj).equals("")) {
-                    s.append("\t").append(qi).append(qj).append(": unificação dos estados ").append(qi).append(" e ").append(qj).append(";");
+                    s.append("\t").append(qi).append(qj).append(": unificação dos estados ").append(qi).append(" e ").append(qj).append(";\n");
                     g.addNode(qi + qj);
                     mapa.put(qi, qi + qj);
                     mapa.put(qj, qi + qj);
@@ -184,5 +205,13 @@ public class Minimizador {
 
     public AFD getAFD() {
         return afd;
+    }
+
+    public static void marcaVisto(Set<String> visto, Grafo g, String n) {
+        visto.add(n);
+        for (char c : g.getAdj().get(n).keySet()) {
+            String i = g.getNode(n, c);
+            if (!visto.contains(i)) marcaVisto(visto, g, i);
+        }
     }
 }
