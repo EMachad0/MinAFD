@@ -1,6 +1,7 @@
 package elitonlais.model;
 
 import guru.nidi.graphviz.attribute.Label;
+import guru.nidi.graphviz.attribute.Rank;
 import guru.nidi.graphviz.attribute.Shape;
 import guru.nidi.graphviz.engine.Format;
 import guru.nidi.graphviz.engine.Graphviz;
@@ -73,17 +74,18 @@ public class AFD {
             else nodes.put(a, node(a).with(Label.nodeName(), Shape.CIRCLE));
         }
 
-        Graph g = graph("MdsLfa").directed();
+        Graph g = graph("MdsLfa").directed().graphAttr().with(Rank.dir(Rank.RankDir.LEFT_TO_RIGHT));
         for (Pair<String, String> p : grafo.getEdges().keySet()) {
-            for (char c : grafo.getEdge(p)) {
-                g = g.with(nodes.get(p.getFi()).link(to(nodes.get(p.getSe())).with(Label.of(String.valueOf(c)))));
-            }
+            StringBuilder s = new StringBuilder();
+            for (char c : grafo.getEdge(p)) s.append(c).append(",");
+            s.deleteCharAt(s.length()-1);
+            g = g.with(nodes.get(p.getFi()).link(to(nodes.get(p.getSe())).with(Label.of(String.valueOf(s)))));
         }
 
         g = g.with(node("").with(Shape.POINT).link(to(nodes.get(estadoInicial))));
 
         try {
-            Graphviz.fromGraph(g).width(400).render(Format.PNG).toFile(new File("graph.png"));
+            Graphviz.fromGraph(g).width(1342).render(Format.PNG).toFile(new File("graph.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
