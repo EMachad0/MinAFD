@@ -93,17 +93,36 @@ public class AFDInputController implements Initializable {
 
             for (int i = 1; i < grid.getSize(); i++) grafo.addNode(((TextField) grid.getNode(i, 0)).getText());
 
+            boolean deter = true;
             for (int i = 1; i < grid.getSize(); i++) {
                 for (int j = 1; j < grid.getSize(); j++) {
                     String a = ((TextField) grid.getNode(i, 0)).getText();
                     String b = ((TextField) grid.getNode(0, j)).getText();
                     String vs = ((TextField) grid.getNode(i, j)).getText();
                     for (char c : vs.toCharArray()) {
-                        grafo.addDirEdge(a, b, c);
+                        if (grafo.getAdj().get(a).containsKey(c)) deter = false;
+                        else grafo.addDirEdge(a, b, c);
                     }
                 }
             }
+            if (!deter) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Automato não deterministíco");
+                alert.show();
+            }
             System.out.println(grafo);
+
+            boolean total = true;
+            for (String node : grafo.getNodes()) {
+                for (Character c : alfa) {
+                    if (!grafo.containTransition(node, c)) total = false;
+                }
+            }
+            if (!total) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Automato não total");
+                alert.show();
+            }
 
             boolean validEI = true;
             String estadoInicial = fieldEstadoInicial.getText();
@@ -132,7 +151,7 @@ public class AFDInputController implements Initializable {
                 alert.show();
             }
 
-            if (validEI && validEF) {
+            if (validEI && validEF && total && deter) {
                 AFD afd = new AFD(estadoInicial, alfa, grafo, estadosFinais);
                 try {
                     App.showStepView(afd);
