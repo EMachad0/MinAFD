@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Minimizador {
 
-    private AFD afd;
+    private final AFD afd;
 
     private final List<String> passoTexto;
     private final List<Map<Pair<String, String>, String>> passoTabela;
@@ -58,10 +58,8 @@ public class Minimizador {
                 Pair<String, String> qiqj = new Pair<>(qi, qj);
 
                 if (m.get(qiqj).equals("")) {
-                    String s = "";
-
-                    s += "(" + qi + ", " + qj + ")\n";
                     // Novo Passo: Analisando par nao marcado
+                    String s = qiqj + ":\n";
 
                     for (Character c : alfa) {
                         String pi = grafo.getNode(qi, c);
@@ -74,32 +72,29 @@ public class Minimizador {
                         }
                         Pair<String, String> pipj = new Pair<>(pi, pj);
 
-
                         s += "Delta(" + qi + ", " + c + ") = " + pi + ";\n";
                         s += "Delta(" + qj + ", " + c + ") = " + pj + ";\n";
-
 
                         if (pi.equals(pj)) {
                             s += "Trivialmente equivalente\n";
                         } else if (m.get(pipj).equals("X")) {
-                            s += "O par ("+ pi + ", " + pj + ") é marcado\n";
-                            s += "Logo ("+ qi + ", " + qj + ") é marcado\n";
+                            s += "O par " + pipj + " é marcado\n";
+                            s += "Logo " + qiqj + " é marcado\n";
                             m.put(qiqj, "X");
 
                             if (lista.containsKey(qiqj)) {
-                                s += "Marcando lista de ("+ pi + ", " + pj + "):\n";
+                                s += "Marcando lista de " + pipj + ":\n";
                                 for (Pair<String, String> pair : lista.get(qiqj)) {
                                     m.put(pair, "X");
-                                    s += "\t("+ pair.getFi() + ", " + pair.getSe() + ") for marcado!";
+                                    s += "\t" + pair + " for marcado!";
                                 }
                             }
                             break;
                         } else {
                             if (!lista.containsKey(pipj)) lista.put(pipj, new ArrayList<>());
-
-                            lista.get(pipj).add(qiqj);
-                            s += "O par ("+ pi + ", " + pj + ") é não marcado\n";
-                            s += "Adicionando ("+ qi + ", " + qj + ") na lista de ("+ pi + ", " + pj + ");\n";
+                            if (!lista.get(pipj).contains(qiqj)) lista.get(pipj).add(qiqj);
+                            s += "O par " + pipj + " é não marcado\n";
+                            s += "Adicionando " + qiqj + " na lista de " + pipj + ";\n";
                         }
                         s += '\n';
                     }
