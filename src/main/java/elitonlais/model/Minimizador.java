@@ -67,12 +67,8 @@ public class Minimizador {
                         String pi = grafo.getNode(qi, c);
                         String pj = grafo.getNode(qj, c);
 
-                        if (pi.compareTo(pj) > 0) {
-                            String aux = pi;
-                            pi = pj;
-                            pj = aux;
-                        }
                         Pair<String, String> pipj = new Pair<>(pi, pj);
+                        if (pi.compareTo(pj) > 0) pipj = pipj.swap();
 
                         s += "Delta(" + qi + ", " + c + ") = " + pi + ";\n";
                         s += "Delta(" + qj + ", " + c + ") = " + pj + ";\n";
