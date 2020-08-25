@@ -109,7 +109,7 @@ public class AFDInputController implements Initializable {
             String estadoInicial = fieldEstadoInicial.getText();
             if (!grafo.containNode(estadoInicial)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("O Estado Inicial " + estadoInicial +" é Invalido");
+                alert.setContentText("O Estado Inicial " + estadoInicial + " é Invalido");
                 alert.show();
                 validEI = false;
             }
