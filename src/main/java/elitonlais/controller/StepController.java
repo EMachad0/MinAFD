@@ -103,6 +103,7 @@ public class StepController implements Initializable {
             for (Pair<String, String> p : lista.get(pair)) {
                 listaText.append(p).append(", ");
             }
+            listaText.deleteCharAt(listaText.length() - 2);
             listaText.append("};\n");
         }
         labelLista.setText(listaText.toString());
