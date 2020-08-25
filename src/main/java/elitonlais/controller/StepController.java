@@ -32,13 +32,8 @@ public class StepController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnAnte.setOnAction(event -> {
-            atualiza(getPasso() - 1);
-        });
-
-        btnNext.setOnAction(event -> {
-            atualiza(getPasso() + 1);
-        });
+        btnAnte.setOnAction(event -> atualiza(getPasso() - 1));
+        btnNext.setOnAction(event -> atualiza(getPasso() + 1));
 
         btnEnd.setOnAction(event -> {
             afd.geraPng();
