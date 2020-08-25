@@ -28,6 +28,10 @@ public class Pair <T1 extends Comparable<T1>, T2 extends Comparable<T2> > implem
         this.se = se;
     }
 
+    public Pair<T2, T1> swap() {
+        return new Pair<>(this.se, this.fi);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -46,5 +50,10 @@ public class Pair <T1 extends Comparable<T1>, T2 extends Comparable<T2> > implem
     public int compareTo(Pair<T1, T2> p) {
         if (fi.equals(p.fi)) return se.compareTo(p.se);
         return fi.compareTo(p.fi);
+    }
+
+    @Override
+    public String toString() {
+        return "{" + fi + ", " + se + '}';
     }
 }

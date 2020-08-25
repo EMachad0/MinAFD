@@ -31,6 +31,15 @@ public class Grafo {
         for (int i = 0; i < n; i++) addNode("Q" + i);
     }
 
+    public void removeNode(String n) {
+        for (String node : nodes) {
+            edges.remove(new Pair<>(n, node));
+            edges.remove(new Pair<>(node, n));
+        }
+        nodes.remove(n);
+        adj.remove(n);
+    }
+
     public void addEdge(String a, String b, Character v) {
         addDirEdge(a, b, v);
         addDirEdge(b, a, v);
@@ -90,5 +99,9 @@ public class Grafo {
 
     public Map<Pair<String, String>, Set<Character>> getEdges() {
         return edges;
+    }
+
+    public Map<String, Map<Character, String>> getAdj() {
+        return adj;
     }
 }

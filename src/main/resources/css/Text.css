@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "JetBrainsMono";
+    src: url('/fonts/JetBrainsMono-Regular.ttf');
+}
+
+.scroll-pane {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.label, .text-field {
+    -fx-font-size: 18;
+    -fx-font-family: "JetBrainsMono";
+}
