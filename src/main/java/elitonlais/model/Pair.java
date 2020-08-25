@@ -47,4 +47,9 @@ public class Pair <T1 extends Comparable<T1>, T2 extends Comparable<T2> > implem
         if (fi.equals(p.fi)) return se.compareTo(p.se);
         return fi.compareTo(p.fi);
     }
+
+    @Override
+    public String toString() {
+        return "{" + fi + ", " + se + '}';
+    }
 }

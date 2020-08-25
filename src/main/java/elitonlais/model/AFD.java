@@ -54,6 +54,14 @@ public class AFD {
         return grafo;
     }
 
+    public Set<String> getEstadosFinais() {
+        return estadosFinais;
+    }
+
+    public Set<Character> getAlfabeto() {
+        return alfabeto;
+    }
+
     public void geraPng() {
         Map<String, Node> nodes = new TreeMap<>();
         for (String a : grafo.getNodes()) {
