@@ -82,14 +82,15 @@ public class AFDInputController implements Initializable {
 
             for (int i = 1; i < grid.getLin(); i++) grafo.addNode(((TextField) grid.getNode(i, 0)).getText());
 
-            boolean validE = true;
+            boolean validE = true, total = true;
             for (int i = 1; i < grid.getLin(); i++) {
                 for (int j = 1; j < grid.getCol(); j++) {
                     String a = ((TextField) grid.getNode(i, 0)).getText();
                     String b = ((TextField) grid.getNode(i, j)).getText();
                     char c = ((Label) grid.getNode(0, j)).getText().charAt(0);
-                    if (!grafo.containNode(b)) {
-                        alertMsg.append(c).append(" ");
+                    if (b.isEmpty()) total = false;
+                    else if (!grafo.containNode(b)) {
+                        alertMsg.append(b).append(" ");
                         validE = false;
                     } else grafo.addDirEdge(a, b, c);
                 }
@@ -99,19 +100,12 @@ public class AFDInputController implements Initializable {
                 alert.setContentText("Os estados " + alertMsg.toString() + "não existem!");
                 alert.show();
             }
-            System.out.println(grafo);
-
-            boolean total = true;
-            for (String node : grafo.getNodes()) {
-                for (Character c : alfa) {
-                    if (!grafo.containTransition(node, c)) total = false;
-                }
-            }
             if (!total) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Automato não total");
                 alert.show();
             }
+            // System.out.println(grafo);
 
             boolean validEI = true;
             String estadoInicial = fieldEstadoInicial.getText();
