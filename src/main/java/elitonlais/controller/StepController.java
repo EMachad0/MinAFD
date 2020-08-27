@@ -48,7 +48,7 @@ public class StepController implements Initializable {
 
     public void initGridPane() {
         List<String> estados = new ArrayList<>(afd.getEstados());
-        grid = new Grid(gridPane, estados.size());
+        grid = new Grid(gridPane, estados.size(), estados.size());
 
         // y axis
         for (int i = 1; i < estados.size(); i++) {

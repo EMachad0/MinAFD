@@ -6,29 +6,30 @@ import javafx.scene.layout.GridPane;
 
 public class Grid {
 
-    private final int size;
+    private final int lin, col;
     private final GridPane gridPane;
     private final Node[][] matriz;
 
-    public Grid(GridPane gridPane, int size) {
-        this.size = size;
+    public Grid(GridPane gridPane, int lin, int col) {
+        this.lin = lin;
+        this.col = col;
         this.gridPane = gridPane;
 
         gridPane.getChildren().clear();
-        matriz = new Node[size][size];
+        matriz = new Node[lin][col];
     }
 
     public void add(Node node, int i, int j) {
-        if (i < 0 || i > size) throw new ArrayIndexOutOfBoundsException("Invalid I");
-        if (j < 0 || j > size) throw new ArrayIndexOutOfBoundsException("Invalid J");
+        if (i < 0 || i >= lin) throw new ArrayIndexOutOfBoundsException("Invalid I");
+        if (j < 0 || j >= col) throw new ArrayIndexOutOfBoundsException("Invalid J");
         if (matriz[i][j] != null) throw new ArrayStoreException("Cell " + i + " " + j + " already taken");
         gridPane.add(node, j, i);
         matriz[i][j] = node;
     }
 
     public Node getNode(int i, int j) {
-        if (i < 0 || i > size) throw new ArrayIndexOutOfBoundsException("Invalid I");
-        if (j < 0 || j > size) throw new ArrayIndexOutOfBoundsException("Invalid J");
+        if (i < 0 || i >= lin) throw new ArrayIndexOutOfBoundsException("Invalid I");
+        if (j < 0 || j >= col) throw new ArrayIndexOutOfBoundsException("Invalid J");
         return matriz[i][j];
     }
 
@@ -37,7 +38,11 @@ public class Grid {
         if (node instanceof Labeled) ((Labeled) node).setText(text);
     }
 
-    public int getSize() {
-        return size;
+    public int getLin() {
+        return lin;
+    }
+
+    public int getCol() {
+        return col;
     }
 }
