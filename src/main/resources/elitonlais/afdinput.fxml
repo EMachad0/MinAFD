@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.AFDInputController">
-    <Label alignment="CENTER" layoutX="50.0" layoutY="30.0" prefHeight="100.0" prefWidth="566.0" text="Minimizador de&#10;Autômatos Finitos Determinísticos">
-        <font>
-            <Font size="32.0" />
-        </font>
-    </Label>
-    <Label layoutX="50.0" layoutY="200.0" prefHeight="25.0" prefWidth="150.0" text="Alfabeto" textAlignment="CENTER" />
-    <Label layoutX="50.0" layoutY="240.0" prefHeight="25.0" prefWidth="150.0" text="Numero De Estados" textAlignment="CENTER" />
-    <TextField fx:id="fieldAlfabeto" layoutX="220.0" layoutY="200.0" prefHeight="25.0" prefWidth="390.0" />
-    <TextField fx:id="fieldNumState" layoutX="220.0" layoutY="240.0" prefHeight="25.0" prefWidth="390.0" />
-    <Button fx:id="btnTabela" layoutX="220.0" layoutY="290.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Gerar Tabela"/>
-    <Label layoutX="50.0" layoutY="410.0" prefHeight="25.0" prefWidth="150.0" text="Estado Inicial" textAlignment="CENTER" />
-    <Label layoutX="50.0" layoutY="450.0" prefHeight="25.0" prefWidth="150.0" text="Estados Finais" textAlignment="CENTER" />
-    <TextField fx:id="fieldEstadoInicial" layoutX="220.0" layoutY="410.0" prefHeight="25.0" prefWidth="390.0" />
-    <TextField fx:id="fieldEstadosFinais" layoutX="220.0" layoutY="450.0" prefHeight="25.0" prefWidth="390.0" />
-    <Button fx:id="btnSimplifica" layoutX="220.0" layoutY="500.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="200.0" text="Simplificar" />
+<AnchorPane fx:id="mainPane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@/css/MainGui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.AFDInputController">
+    <Label fx:id="mainTitulo" alignment="CENTER" layoutX="50.0" layoutY="30.0" prefHeight="147.0" prefWidth="566.0" text="Simulador de autômatos com&#10;   pilha não-determinísticos" />
+    <Label layoutX="53.0" layoutY="262.0" prefHeight="25.0" prefWidth="239.0" text="Alfabeto" textAlignment="CENTER" />
+    <Label layoutX="53.0" layoutY="302.0" prefHeight="25.0" prefWidth="239.0" text="Numero De Estados" textAlignment="CENTER" />
+    <TextField fx:id="fieldAlfabeto" layoutX="304.0" layoutY="262.0" prefHeight="26.0" prefWidth="309.0" />
+    <TextField fx:id="fieldNumState" layoutX="304.0" layoutY="302.0" prefHeight="26.0" prefWidth="309.0" />
+    <Button fx:id="btnTabela" layoutX="359.0" layoutY="352.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Gerar Tabela" />
+    <Label layoutX="53.0" layoutY="472.0" prefHeight="25.0" prefWidth="239.0" text="Estado Inicial" textAlignment="CENTER" />
+    <Label layoutX="53.0" layoutY="512.0" prefHeight="25.0" prefWidth="239.0" text="Estados Finais" textAlignment="CENTER" />
+    <TextField fx:id="fieldEstadoInicial" layoutX="304.0" layoutY="472.0" prefHeight="26.0" prefWidth="309.0" />
+    <TextField fx:id="fieldEstadosFinais" layoutX="304.0" layoutY="512.0" prefHeight="26.0" prefWidth="309.0" />
+    <Button fx:id="btnSimplifica" layoutX="359.0" layoutY="559.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="200.0" text="Simplificar" />
     <ScrollPane layoutX="680.0" layoutY="100.0" prefHeight="600.0" prefWidth="600.0" stylesheets="@/css/Grid.css">
         <GridPane fx:id="gridPane" />
     </ScrollPane>
+   <Label fx:id="creditos" layoutX="18.0" layoutY="730.0" prefHeight="24.0" prefWidth="566.0" text="Projeto desenvolvido para a disciplina de LFA por Eliton Machado e Laís Van Vossen." />
 </AnchorPane>
