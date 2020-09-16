@@ -54,9 +54,9 @@ public class AFDInputController implements Initializable {
 
             for (int i = 0; i < numEstados; i++) {
                 TextField tf1 = new TextField(), tf2 = new TextField();
-                tf1.setText("Q" + i);
+                tf1.setText("q" + i);
                 tf1.setId("state");
-                tf2.setText("Q" + i);
+                tf2.setText("q" + i);
                 tf2.setId("state");
                 tf1.textProperty().addListener((observable, oldValue, newValue) -> {
                     if (tf1.isFocused()) tf2.setText(newValue);
