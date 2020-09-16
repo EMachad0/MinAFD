@@ -1,0 +1,21 @@
+.button{
+    -fx-background-color: #031c45;
+    /*-fx-font-style: italic;*/
+    -fx-text-fill: white;
+}
+
+.label{
+    -fx-text-fill: black;
+    -fx-font-size: 25;
+    -fx-font-family: "Roboto Condensed";
+    /*-fx-font-style: bold;*/
+}
+
+.text-field{
+    -fx-border-width: 2;
+    -fx-border-color: #031c45;
+}
+
+#fundo{
+    -fx-background-color: #4d84e3;
+}

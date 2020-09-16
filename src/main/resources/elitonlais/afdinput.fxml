@@ -2,9 +2,10 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="mainPane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@/css/MainGui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.AFDInputController">
-    <Label fx:id="mainTitulo" alignment="CENTER" layoutX="50.0" layoutY="30.0" prefHeight="147.0" prefWidth="566.0" text="Simulador de autômatos com&#10;   pilha não-determinísticos" />
+    <Label fx:id="mainTitulo" alignment="CENTER" layoutX="50.0" layoutY="30.0" prefHeight="147.0" prefWidth="566.0" text="Simulador de autômatos com&#10;        pilha determinísticos" />
     <Label layoutX="53.0" layoutY="262.0" prefHeight="25.0" prefWidth="239.0" text="Alfabeto" textAlignment="CENTER" />
     <Label layoutX="53.0" layoutY="302.0" prefHeight="25.0" prefWidth="239.0" text="Numero De Estados" textAlignment="CENTER" />
     <TextField fx:id="fieldAlfabeto" layoutX="304.0" layoutY="262.0" prefHeight="26.0" prefWidth="309.0" />
@@ -18,5 +19,13 @@
     <ScrollPane layoutX="680.0" layoutY="100.0" prefHeight="600.0" prefWidth="600.0" stylesheets="@/css/Grid.css">
         <GridPane fx:id="gridPane" />
     </ScrollPane>
-   <Label fx:id="creditos" layoutX="18.0" layoutY="730.0" prefHeight="24.0" prefWidth="566.0" text="Projeto desenvolvido para a disciplina de LFA por Eliton Machado e Laís Van Vossen." />
+   <Label fx:id="creditos" layoutX="21.0" layoutY="742.0" prefHeight="24.0" prefWidth="566.0" text="Projeto desenvolvido para a disciplina de LFA por Eliton Machado e Laís Van Vossen." />
+   <Label fx:id="legenda" layoutX="680.0" layoutY="700.0" prefHeight="30.0" prefWidth="600.0" text="Legenda: - Para colocar epsilon entre com \epsilon.">
+      <font>
+         <Font name="Roboto Light Italic" size="11.0" />
+      </font></Label>
+   <Label fx:id="legenda" layoutX="749.0" layoutY="727.0" prefHeight="30.0" prefWidth="508.0" text="- O &quot;?&quot; representa pergunta.">
+      <font>
+         <Font name="Ubuntu Light" size="11.0" />
+      </font></Label>
 </AnchorPane>
