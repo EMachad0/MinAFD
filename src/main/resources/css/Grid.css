@@ -9,11 +9,11 @@
     -fx-border-color: #031c45;
 }
 
-.label, .text-field {
+.label, .text-field, .button {
     -fx-background-color: #adc9e2;
     -fx-border-color: black;
     -fx-border-width: 2;
-    -fx-pref-width: 50;
+    -fx-pref-width: 100;
     -fx-pref-height: 50;
     -fx-alignment: center;
     -fx-font-size: 14;
