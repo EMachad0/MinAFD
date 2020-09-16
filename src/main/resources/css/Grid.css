@@ -4,12 +4,13 @@
 }
 
 .scroll-pane {
-    -fx-border-color: transparent;
     -fx-background-color: transparent;
+    -fx-border-width: 10;
+    -fx-border-color: #031c45;
 }
 
 .label, .text-field {
-    -fx-background-color: white;
+    -fx-background-color: #adc9e2;
     -fx-border-color: black;
     -fx-border-width: 2;
     -fx-pref-width: 50;
@@ -20,5 +21,5 @@
 }
 
 #state {
-    -fx-background-color: #9a8d3d;
+    -fx-background-color: #66b4ef;
 }
