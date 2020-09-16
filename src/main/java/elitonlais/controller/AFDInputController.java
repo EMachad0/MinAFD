@@ -50,59 +50,62 @@ public class AFDInputController implements Initializable {
             System.out.println("alfa: " + alfa);
 
             // Grid
-            grid = new Grid(gridPane, numEstados+1, alfa.size()+1);
-            for (int i = 0; i < numEstados; i++) {
-                TextField tf = new TextField();
-                tf.setText("q" + i);
-                tf.setTextFormatter(new TextFormatter<>(c -> (c.getControlNewText().matches("([A-Z]|[a-z]|[0-9])*")) ? c : null));
-                tf.setId("state");
-                grid.add(tf, i+1, 0);
-            }
+            grid = new Grid(gridPane, numEstados+1, numEstados+1);
 
-            List <Character> alfalist = new ArrayList<>(alfa);
-            for (int i = 0; i < alfalist.size(); i++) {
-                Label l = new Label();
-                l.setText(String.valueOf(alfalist.get(i)));
-                l.setId("state");
-                grid.add(l, 0, i+1);
+            for (int i = 0; i < numEstados; i++) {
+                TextField tf1 = new TextField(), tf2 = new TextField();
+                tf1.setText("Q" + i);
+                tf1.setId("state");
+                tf2.setText("Q" + i);
+                tf2.setId("state");
+                tf1.textProperty().addListener((observable, oldValue, newValue) -> {
+                    if (tf1.isFocused()) tf2.setText(newValue);
+                });
+                tf2.textProperty().addListener((observable, oldValue, newValue) -> {
+                    if (tf2.isFocused()) tf1.setText(newValue);
+                });
+                grid.add(tf1, i+1, 0);
+                grid.add(tf2, 0, i+1);
             }
 
             for (int i = 1; i <= numEstados; i++) {
-                for (int j = 1; j <= alfalist.size(); j++) {
+                for (int j = 1; j <= numEstados; j++) {
                     TextField tf = new TextField();
-                    tf.setTextFormatter(new TextFormatter<>(c -> (c.getControlNewText().matches("([A-Z]|[a-z]|[0-9])*")) ? c : null));
+                    tf.textProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue.length() > oldValue.length()) {
+                            char novo = newValue.charAt(newValue.length()-1);
+                            if (tf.isFocused()) {
+                                fieldNumState.requestFocus();
+                                if (!alfa.contains(novo) || oldValue.indexOf(novo) != -1) tf.setText(oldValue);
+                                tf.requestFocus();
+                            }
+                        }
+                    });
                     grid.add(tf, i, j);
                 }
             }
         });
 
         btnSimplifica.setOnAction(event -> {
-            StringBuilder alertMsg = new StringBuilder();
             Grafo grafo = new Grafo();
 
             for (int i = 1; i < grid.getLin(); i++) grafo.addNode(((TextField) grid.getNode(i, 0)).getText());
 
-            boolean validE = true, total = true;
+            boolean deter = true;
             for (int i = 1; i < grid.getLin(); i++) {
                 for (int j = 1; j < grid.getCol(); j++) {
                     String a = ((TextField) grid.getNode(i, 0)).getText();
-                    String b = ((TextField) grid.getNode(i, j)).getText();
-                    char c = ((Label) grid.getNode(0, j)).getText().charAt(0);
-                    if (b.isEmpty()) total = false;
-                    else if (!grafo.containNode(b)) {
-                        alertMsg.append(b).append(" ");
-                        validE = false;
-                    } else grafo.addDirEdge(a, b, c);
+                    String b = ((TextField) grid.getNode(0, j)).getText();
+                    String vs = ((TextField) grid.getNode(i, j)).getText();
+                    for (char c : vs.toCharArray()) {
+                        if (grafo.getAdj().get(a).containsKey(c)) deter = false;
+                        else grafo.addDirEdge(a, b, c);
+                    }
                 }
             }
-            if (!validE) {
+            if (!deter) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Os estados " + alertMsg.toString() + "não existem!");
-                alert.show();
-            }
-            if (!total) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Automato não total");
+                alert.setContentText("Automato não deterministíco");
                 alert.show();
             }
             // System.out.println(grafo);
@@ -121,7 +124,7 @@ public class AFDInputController implements Initializable {
             estadosFinais.addAll(Arrays.asList(arrEstadosFinais));
 
             boolean validEF = true;
-            alertMsg = new StringBuilder();
+            StringBuilder alertMsg = new StringBuilder();
             for (String s : estadosFinais) {
                 if (!grafo.containNode(s)) {
                     validEF = false;
@@ -134,7 +137,7 @@ public class AFDInputController implements Initializable {
                 alert.show();
             }
 
-            if (validE && validEI && validEF && total) {
+            if (deter && validEI && validEF) {
                 AFD afd = new AFD(estadoInicial, alfa, grafo, estadosFinais);
                 try {
                     App.showStepView(afd);
