@@ -2,6 +2,7 @@ package elitonlais.controller;
 
 import elitonlais.App;
 import elitonlais.model.AFD;
+import elitonlais.model.Aresta;
 import elitonlais.model.Grafo;
 import elitonlais.model.Grid;
 import javafx.fxml.FXML;

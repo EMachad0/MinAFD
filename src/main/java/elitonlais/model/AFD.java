@@ -10,9 +10,7 @@ import guru.nidi.graphviz.model.Node;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 import static guru.nidi.graphviz.model.Factory.*;
 
@@ -33,16 +31,16 @@ public class AFD {
     public boolean executa(String palavra) {
         boolean terminouPalavra = true;
         String estado = estadoInicial;
-        for (int i = 0; i < palavra.length(); i++) {
-            System.out.println(estado);
-
-            char transicao = palavra.charAt(i);
-            if (!grafo.containTransition(estado, transicao)) {
-                terminouPalavra = false;
-                break;
-            }
-            estado = grafo.getNode(estado, transicao);
-        }
+//        for (int i = 0; i < palavra.length(); i++) {
+//            System.out.println(estado);
+//
+//            char transicao = palavra.charAt(i);
+//            if (!grafo.containTransition(estado, transicao)) {
+//                terminouPalavra = false;
+//                break;
+//            }
+//            estado = grafo.getNode(estado, transicao);
+//        }
 
         return terminouPalavra && estadosFinais.contains(estado);
     }
@@ -75,11 +73,15 @@ public class AFD {
         }
 
         Graph g = graph("MdsLfa").directed().graphAttr().with(Rank.dir(Rank.RankDir.LEFT_TO_RIGHT));
-        for (Pair<String, String> p : grafo.getEdges().keySet()) {
-            StringBuilder s = new StringBuilder();
-            for (char c : grafo.getEdge(p)) s.append(c).append(",");
-            s.deleteCharAt(s.length()-1);
-            g = g.with(nodes.get(p.getFi()).link(to(nodes.get(p.getSe())).with(Label.of(String.valueOf(s)))));
+
+        for (String a : grafo.getNodes()) {
+            for (String b : grafo.getNodes()) {
+                List<Aresta> list = grafo.getEdge(a, b);
+                StringJoiner joiner = new StringJoiner(",");
+                for (Aresta aresta : list) joiner.add(aresta.toString());
+                String val = joiner.toString();
+                g = g.with(nodes.get(a).link(to(nodes.get(b)).with(Label.of(String.valueOf(val)))));
+            }
         }
 
         g = g.with(node("").with(Shape.POINT).link(to(nodes.get(estadoInicial))));
