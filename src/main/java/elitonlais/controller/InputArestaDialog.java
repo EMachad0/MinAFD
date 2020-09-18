@@ -23,7 +23,7 @@ public class InputArestaDialog implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnOk.setOnAction(evt -> {
-            dado = tf1.getText() + tf2.getText() + tf3.getText();
+            dado = tf1.getText() + "," + tf2.getText() + "," + tf3.getText();
             closeStage(evt);
         });
     }
