@@ -2,6 +2,7 @@ package elitonlais.controller;
 
 import elitonlais.App;
 import elitonlais.model.AFD;
+import elitonlais.model.Aresta;
 import elitonlais.model.Grafo;
 import elitonlais.model.Grid;
 import javafx.fxml.FXML;
@@ -81,16 +82,13 @@ public class AFDInputController implements Initializable {
                             FXMLLoader loader = new FXMLLoader();
                             loader.setLocation(App.class.getResource("InputArestaDialog.fxml"));
                             Parent parent = loader.load();
-
                             InputArestaDialog d = loader.getController();
-
                             Scene scene = new Scene(parent, 300, 200);
                             Stage stage = new Stage();
                             stage.initModality(Modality.APPLICATION_MODAL);
                             stage.setScene(scene);
                             stage.showAndWait();
-
-                            System.out.println(d.getDado());
+                            btn.setText(d.getDado());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -110,11 +108,15 @@ public class AFDInputController implements Initializable {
                 for (int j = 1; j < grid.getCol(); j++) {
                     String a = ((TextField) grid.getNode(i, 0)).getText();
                     String b = ((TextField) grid.getNode(0, j)).getText();
-                    String vs = ((TextField) grid.getNode(i, j)).getText();
-                    for (char c : vs.toCharArray()) {
-                        if (grafo.getAdj().get(a).containsKey(c)) deter = false;
-                        else grafo.addDirEdge(a, b, c);
-                    }
+                    String vs = ((Button) grid.getNode(i, j)).getText();
+
+                    System.out.println(vs);
+                    String[] arr = vs.split(",");
+                    char fi = arr[0].charAt(0);
+                    char se = arr[1].charAt(0);
+                    char th = arr[2].charAt(0);
+                    if (grafo.containTransition(a, fi, se, th)) deter = false;
+                    else grafo.addDirEdge(new Aresta(a, b, fi, se, th));
                 }
             }
             if (!deter) {
