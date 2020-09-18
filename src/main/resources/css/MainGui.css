@@ -14,7 +14,7 @@
 #mainTitulo{
     -fx-text-fill: black;
     -fx-font-size: 40;
-    -fx-font-family: "Roboto Condensed"
+    -fx-font-family: "Roboto Condensed";
 }
 .label{
     -fx-text-fill: black;
@@ -22,7 +22,7 @@
     -fx-font-family: "Roboto Condensed";
 }
 
-.text-field{
+.text-field, .text-area{
     -fx-border-width: 2;
     -fx-border-color: #031c45;
 }
