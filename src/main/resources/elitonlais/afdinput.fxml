@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="mainPane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@/css/MainGui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.AFDInputController">
-    <Label fx:id="mainTitulo" alignment="CENTER" layoutX="50.0" layoutY="30.0" prefHeight="147.0" prefWidth="566.0" text="Simulador de autômatos com&#10;        pilha determinísticos" />
-    <Label layoutX="53.0" layoutY="262.0" prefHeight="25.0" prefWidth="239.0" text="Alfabeto" textAlignment="CENTER" />
-    <Label layoutX="53.0" layoutY="302.0" prefHeight="25.0" prefWidth="239.0" text="Numero De Estados" textAlignment="CENTER" />
-    <TextField fx:id="fieldAlfabeto" layoutX="304.0" layoutY="262.0" prefHeight="26.0" prefWidth="309.0" />
-    <TextField fx:id="fieldNumState" layoutX="304.0" layoutY="302.0" prefHeight="26.0" prefWidth="309.0" />
-    <Button fx:id="btnTabela" layoutX="359.0" layoutY="352.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Gerar Tabela" />
-    <Label layoutX="53.0" layoutY="472.0" prefHeight="25.0" prefWidth="239.0" text="Estado Inicial" textAlignment="CENTER" />
-    <Label layoutX="53.0" layoutY="512.0" prefHeight="25.0" prefWidth="239.0" text="Estados Finais" textAlignment="CENTER" />
-    <TextField fx:id="fieldEstadoInicial" layoutX="304.0" layoutY="472.0" prefHeight="26.0" prefWidth="309.0" />
-    <TextField fx:id="fieldEstadosFinais" layoutX="304.0" layoutY="512.0" prefHeight="26.0" prefWidth="309.0" />
-    <Button fx:id="btnSimplifica" layoutX="359.0" layoutY="559.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="200.0" text="Simplificar" />
-    <ScrollPane layoutX="680.0" layoutY="100.0" prefHeight="600.0" prefWidth="600.0" stylesheets="@/css/Grid.css">
-        <GridPane fx:id="gridPane" />
-    </ScrollPane>
-   <Label fx:id="creditos" layoutX="21.0" layoutY="742.0" prefHeight="24.0" prefWidth="566.0" text="Projeto desenvolvido para a disciplina de LFA por Eliton Machado e Laís Van Vossen." />
-   <Label fx:id="legenda" layoutX="680.0" layoutY="700.0" prefHeight="30.0" prefWidth="600.0" text="Legenda: - Para colocar epsilon entre com \epsilon.">
-      <font>
-         <Font name="Roboto Light Italic" size="11.0" />
-      </font></Label>
-   <Label fx:id="legenda" layoutX="749.0" layoutY="727.0" prefHeight="30.0" prefWidth="508.0" text="- O &quot;?&quot; representa pergunta.">
-      <font>
-         <Font name="Ubuntu Light" size="11.0" />
-      </font></Label>
+      <TextField layoutX="52.0" layoutY="290.0" prefHeight="26.0" prefWidth="437.0" promptText="Entre com uma palavra para ser testada" />
+   <Label fx:id="mainTitulo" layoutX="52.0" layoutY="47.0" prefHeight="165.0" prefWidth="419.0" text=" Simulador de Autômatos&#10;com Pilha Determinísticos" />
+   <TextArea promptText="Entre com uma palavra para ser testada por linha" layoutX="52.0" layoutY="397.0" prefHeight="200.0" prefWidth="200.0" />
+   <TextArea layoutX="290.0" layoutY="397.0" prefHeight="200.0" prefWidth="200.0" />
+   <ImageView fitHeight="563.0" fitWidth="790.0" layoutX="538.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+   <Label fx:id="creditos" layoutX="26.0" layoutY="729.0" prefHeight="26.0" prefWidth="513.0" text="Trabalho desenvolvido para a disciplina de LFA por Eliton Machado e Laís Van Vossen" />
+   <Button layoutX="683.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Adicionar Estado" />
+   <Button layoutX="874.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Adicionar Transição" />
+   <Button layoutX="1066.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Apagar Tudo" />
+   <Button layoutX="188.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Testar Palavras" />
+   <Label layoutX="52.0" layoutY="238.0" prefHeight="34.0" prefWidth="135.0" text="Fita unica:" />
 </AnchorPane>
