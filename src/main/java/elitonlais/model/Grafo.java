@@ -26,6 +26,7 @@ public class Grafo {
     }
 
     public void removeNode(String n) {
+        size--;
         nodes.remove(n);
         adj.remove(n);
     }
