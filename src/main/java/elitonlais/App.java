@@ -61,7 +61,7 @@ public class App extends Application {
         stage.close();
     }
 
-    public static Object dialog(String fxml, String title) throws IOException {
+    public static Object showDialog(String fxml, String title) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(App.class.getResource(fxml + ".fxml"));
 
