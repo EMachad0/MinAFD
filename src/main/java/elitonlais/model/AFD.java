@@ -70,28 +70,31 @@ public class AFD {
     }
 
     public void geraPng() {
+        Graph g = graph("MdsLfa").directed().graphAttr().with(Rank.dir(Rank.RankDir.LEFT_TO_RIGHT));
+
         Map<String, Node> nodes = new TreeMap<>();
         for (String a : grafo.getNodes()) {
             if (estadosFinais.contains(a)) nodes.put(a, node(a).with(Label.nodeName(), Shape.DOUBLE_CIRCLE));
             else nodes.put(a, node(a).with(Label.nodeName(), Shape.CIRCLE));
         }
-
-        Graph g = graph("MdsLfa").directed().graphAttr().with(Rank.dir(Rank.RankDir.LEFT_TO_RIGHT));
+        for (Node node : nodes.values()) g = g.with(node);
 
         for (String a : grafo.getNodes()) {
             for (String b : grafo.getNodes()) {
                 List<Aresta> list = grafo.getEdge(a, b);
-                StringJoiner joiner = new StringJoiner(",");
-                for (Aresta aresta : list) joiner.add(aresta.toString());
-                String val = joiner.toString();
-                g = g.with(nodes.get(a).link(to(nodes.get(b)).with(Label.of(String.valueOf(val)))));
+                if (!list.isEmpty()) {
+                    StringJoiner joiner = new StringJoiner(",");
+                    for (Aresta aresta : list) joiner.add(aresta.toString());
+                    String val = joiner.toString();
+                    g = g.with(nodes.get(a).link(to(nodes.get(b)).with(Label.of(String.valueOf(val)))));
+                }
             }
         }
 
-        g = g.with(node("").with(Shape.POINT).link(to(nodes.get(estadoInicial))));
+        if (estadoInicial != null) g = g.with(node("").with(Shape.POINT).link(to(nodes.get(estadoInicial))));
 
         try {
-            Graphviz.fromGraph(g).width(1342).render(Format.PNG).toFile(new File("graph.png"));
+            Graphviz.fromGraph(g).width(790).height(563).render(Format.PNG).toFile(new File("graph.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
