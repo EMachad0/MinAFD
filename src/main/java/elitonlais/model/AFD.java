@@ -16,7 +16,7 @@ import static guru.nidi.graphviz.model.Factory.*;
 
 public class AFD {
 
-    private final String estadoInicial;
+    private String estadoInicial;
     private final Set<Character> alfabeto;
     private final Grafo grafo;
     private final Set<String> estadosFinais;
@@ -63,6 +63,10 @@ public class AFD {
 
     public String getEstadoInicial() {
         return estadoInicial;
+    }
+
+    public void setEstadoInicial(String estadoInicial) {
+        this.estadoInicial = estadoInicial;
     }
 
     public void geraPng() {
