@@ -3,12 +3,15 @@ package elitonlais.controller;
 import elitonlais.App;
 import elitonlais.model.AFD;
 import elitonlais.model.Grafo;
+import elitonlais.model.Simulador;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
@@ -26,6 +29,9 @@ public class AFDInputController implements Initializable {
     @FXML public Button btnClear;
     @FXML public Button btnExecute;
     @FXML public ImageView imageView;
+    @FXML public TextField tfFita;
+    @FXML public TextArea taInput;
+    @FXML public TextArea taOutput;
 
     private AFD afd;
 
@@ -68,7 +74,8 @@ public class AFDInputController implements Initializable {
             try {
                 Parent parent = loader.load();
 
-                ((StepController) loader.getController()).setAFD(afd);
+                ((StepController) loader.getController()).setFita(tfFita.getText());
+                ((StepController) loader.getController()).setSimulador(new Simulador(afd));
                 Scene scene = new Scene(parent);
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);
