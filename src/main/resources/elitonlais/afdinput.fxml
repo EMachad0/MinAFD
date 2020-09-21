@@ -5,15 +5,15 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane fx:id="mainPane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@/css/MainGui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.AFDInputController">
-      <TextField layoutX="52.0" layoutY="290.0" prefHeight="26.0" prefWidth="437.0" promptText="Entre com uma palavra para ser testada" />
+   <TextField layoutX="52.0" layoutY="290.0" prefHeight="26.0" prefWidth="437.0" promptText="Entre com uma palavra para ser testada" />
    <Label fx:id="mainTitulo" layoutX="52.0" layoutY="47.0" prefHeight="165.0" prefWidth="419.0" text=" Simulador de Autômatos&#10;com Pilha Determinísticos" />
    <TextArea promptText="Entre com uma palavra para ser testada por linha" layoutX="52.0" layoutY="397.0" prefHeight="200.0" prefWidth="200.0" />
    <TextArea layoutX="290.0" layoutY="397.0" prefHeight="200.0" prefWidth="200.0" />
-   <ImageView fitHeight="563.0" fitWidth="790.0" layoutX="538.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+   <ImageView fx:id="imageView" fitHeight="563.0" fitWidth="790.0" layoutX="538.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
    <Label fx:id="creditos" layoutX="26.0" layoutY="729.0" prefHeight="26.0" prefWidth="513.0" text="Trabalho desenvolvido para a disciplina de LFA por Eliton Machado e Laís Van Vossen" />
-   <Button layoutX="683.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Adicionar Estado" />
-   <Button layoutX="874.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Adicionar Transição" />
-   <Button layoutX="1066.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Apagar Tudo" />
-   <Button layoutX="188.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Testar Palavras" />
+   <Button fx:id="btnAddNode" layoutX="683.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Adicionar Estado" />
+   <Button fx:id="btnAddEdge" layoutX="874.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Adicionar Transição" />
+   <Button fx:id="btnClear" layoutX="1066.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Apagar Tudo" />
+   <Button fx:id="btnExecute" layoutX="188.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Testar Palavras" />
    <Label layoutX="52.0" layoutY="238.0" prefHeight="34.0" prefWidth="135.0" text="Fita unica:" />
 </AnchorPane>
