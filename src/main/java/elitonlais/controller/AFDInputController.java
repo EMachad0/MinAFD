@@ -65,9 +65,10 @@ public class AFDInputController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("step.fxml"));
 
-            ((StepController) loader.getController()).setAFD(afd);
             try {
                 Parent parent = loader.load();
+
+                ((StepController) loader.getController()).setAFD(afd);
                 Scene scene = new Scene(parent);
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);
