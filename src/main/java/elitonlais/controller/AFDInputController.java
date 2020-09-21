@@ -4,10 +4,15 @@ import elitonlais.App;
 import elitonlais.model.AFD;
 import elitonlais.model.Grafo;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -54,6 +59,24 @@ public class AFDInputController implements Initializable {
         btnClear.setOnAction(e -> {
             afd = new AFD(null, new TreeSet<>(), new Grafo(), new TreeSet<>(new StringSizeFirstComparator()));
             atualizaImagem();
+        });
+
+        btnExecute.setOnAction(e -> {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("step.fxml"));
+
+            ((StepController) loader.getController()).setAFD(afd);
+            try {
+                Parent parent = loader.load();
+                Scene scene = new Scene(parent);
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(scene);
+                stage.setTitle("Visualização passo a passo");
+                stage.showAndWait();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         });
     }
 

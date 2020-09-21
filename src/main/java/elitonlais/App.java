@@ -1,7 +1,5 @@
 package elitonlais;
 
-import elitonlais.controller.StepController;
-import elitonlais.model.AFD;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -28,17 +26,6 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setTitle("Simulador de AFD");
         stage.show();
-    }
-
-    public static void showStepView(AFD afd) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(App.class.getResource("step.fxml"));
-        Parent s = loader.load();
-
-        StepController stepController = loader.getController();
-        stepController.setAFD(afd);
-
-        scene.setRoot(s);
     }
 
     public static void setRoot(String fxml) throws IOException {
