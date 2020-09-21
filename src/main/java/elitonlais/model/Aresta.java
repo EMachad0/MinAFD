@@ -9,6 +9,8 @@ public class Aresta implements Comparable<Aresta> {
     private Character th;
 
     public Aresta(String a, String b, char fi, char se, char th) {
+        this.a = a;
+        this.b = b;
         this.fi = fi;
         this.se = se;
         this.th = th;

@@ -5,7 +5,7 @@
 
 <AnchorPane fx:id="fundo" prefHeight="139.0" prefWidth="211.0" stylesheets="@/css/PopUp.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.InputNodeDialog">
     <Button fx:id="btnOk" layoutX="76.0" layoutY="106.0" mnemonicParsing="false" text="Inserir" />
-    <TextField fx:id="tf1" layoutX="10.0" layoutY="14.0" prefHeight="30.0" prefWidth="193.0" promptText="Nome do nodo"/>
+    <TextField fx:id="tf1" layoutX="10.0" layoutY="14.0" prefHeight="30.0" prefWidth="193.0" promptText="Nome do nodo" />
     <CheckBox fx:id="box1" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" text="Estado Inicial" />
     <CheckBox fx:id="box2" layoutX="10.0" layoutY="79.0" mnemonicParsing="false" text="Estado Final" />
 </AnchorPane>

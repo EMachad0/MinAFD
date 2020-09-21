@@ -12,7 +12,7 @@ public class Grafo {
 
     public Grafo() {
         nodes = new TreeSet<>(new StringSizeFirstComparator());
-        adj = new TreeMap<>(new StringSizeFirstComparator());
+        adj = new TreeMap<>();
     }
 
     public void addNode(String s) {
@@ -26,6 +26,7 @@ public class Grafo {
     }
 
     public void removeNode(String n) {
+        size--;
         nodes.remove(n);
         adj.remove(n);
     }
