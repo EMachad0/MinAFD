@@ -28,23 +28,6 @@ public class AFD {
         this.estadosFinais = estadosFinais;
     }
 
-    public boolean executa(String palavra) {
-        boolean terminouPalavra = true;
-        String estado = estadoInicial;
-//        for (int i = 0; i < palavra.length(); i++) {
-//            System.out.println(estado);
-//
-//            char transicao = palavra.charAt(i);
-//            if (!grafo.containTransition(estado, transicao)) {
-//                terminouPalavra = false;
-//                break;
-//            }
-//            estado = grafo.getNode(estado, transicao);
-//        }
-
-        return terminouPalavra && estadosFinais.contains(estado);
-    }
-
     public Set<String> getEstados() {
         return grafo.getNodes();
     }
