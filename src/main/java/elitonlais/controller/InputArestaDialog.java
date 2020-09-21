@@ -1,6 +1,5 @@
 package elitonlais.controller;
 
-import com.kitfox.svg.A;
 import elitonlais.App;
 import elitonlais.model.Aresta;
 import javafx.fxml.FXML;
@@ -25,7 +24,10 @@ public class InputArestaDialog implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnOk.setOnAction(evt -> {
-            aresta = new Aresta(tf1.getText(), tf2.getText(), tf3.getText().charAt(0), tf4.getText().charAt(0), tf5.getText().charAt(0));
+            char fi = (tf3.getText().isEmpty())? 'ε':tf3.getText().charAt(0);
+            char se = (tf4.getText().isEmpty())? 'ε':tf4.getText().charAt(0);
+            char th = (tf5.getText().isEmpty())? 'ε':tf5.getText().charAt(0);
+            aresta = new Aresta(tf1.getText(), tf2.getText(), fi, se, th);
             App.closeStage(evt);
         });
     }
