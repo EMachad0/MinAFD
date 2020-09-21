@@ -1,28 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.StepController">
-    <Button fx:id="btnAnte" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="50" prefWidth="50" text="&lt;" />
-    <Label fx:id="labelStepNumber" alignment="CENTER" layoutX="80.0" layoutY="15.0" prefHeight="50" prefWidth="50" text="0" />
-    <Button fx:id="btnNext" layoutX="145.0" layoutY="15.0" mnemonicParsing="false" prefHeight="50" prefWidth="50" text="&gt;" />
-    <Button fx:id="btnEnd" layoutX="1152.0" layoutY="719.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Terminar">
-        <font>
-            <Font name="Calibri" size="18.0" />
-        </font>
-    </Button>
-    <ScrollPane layoutX="683.0" layoutY="106.0" prefHeight="600.0" prefWidth="600.0" stylesheets="@/css/Grid.css">
-        <GridPane fx:id="gridPane" />
+    <Button fx:id="btnAnte" layoutX="80.0" layoutY="40.0" mnemonicParsing="false" prefHeight="50" prefWidth="50" text="&lt;" />
+    <Label fx:id="labelStepNumber" layoutX="203.0" layoutY="40.0" prefHeight="50" prefWidth="669.0" text="fita" />
+    <Button fx:id="btnNext" layoutX="143.0" layoutY="40.0" mnemonicParsing="false" prefHeight="50" prefWidth="50" text="&gt;" />
+    <Button fx:id="btnEnd" layoutX="1152.0" layoutY="719.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Terminar" />
+    <ImageView fx:id="imageView" fitHeight="563.0" fitWidth="790.0" layoutX="80.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" />
+    <ScrollPane layoutX="1053.0" layoutY="106.0" prefHeight="542.0" prefWidth="230.0" stylesheets="@/css/Grid.css">
+        <VBox fx:id="vBox" prefHeight="500.0" prefWidth="228.0" />
     </ScrollPane>
-    <ScrollPane layoutX="105.0" layoutY="106.0" prefHeight="386.0" prefWidth="536.0" stylesheets="@/css/Text.css">
-        <Label fx:id="labelMainText" alignment="TOP_LEFT" text="MainTxt" />
-    </ScrollPane>
-    <ScrollPane layoutX="105.0" layoutY="513.0" prefHeight="196.0" prefWidth="536.0" stylesheets="@/css/Text.css">
-        <Label fx:id="labelLista" alignment="TOP_LEFT" text="Listas" />
-    </ScrollPane>
+    <Label layoutX="1053.0" layoutY="40.0" prefHeight="35.0" prefWidth="230.0" alignment="CENTER" text="Pilha" />
 </AnchorPane>
