@@ -75,7 +75,7 @@ public class Simulador {
             }
         }
 
-        return afd.getEstadosFinais().contains(atual) && terminouFita;
+        return afd.getEstadosFinais().contains(atual) && terminouFita && pilha.isEmpty();
     }
 
     public void geraPng() {
