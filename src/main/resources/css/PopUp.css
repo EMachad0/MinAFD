@@ -19,3 +19,10 @@
 #fundo{
     -fx-background-color: #4d84e3;
 }
+
+#legenda{
+    -fx-text-fill: black;
+    -fx-font-size: 13;
+    -fx-font-family: "Roboto Condensed";
+    -fx-font-style: italic;
+}

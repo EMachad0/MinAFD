@@ -43,9 +43,12 @@ public class AFDInputController implements Initializable {
         btnAddNode.setOnAction(e -> {
             try {
                 InputNodeDialog d = (InputNodeDialog) App.showDialog("InputNodeDialog", "Novo Estado");
-                afd.getGrafo().addNode(d.getText());
-                if (d.isInicial()) afd.setEstadoInicial(d.getText());
-                if (d.isFinal()) afd.getEstadosFinais().add(d.getText());
+                if(!d.getText().equals("")){
+                    afd.getGrafo().addNode(d.getText());
+                    if (d.isInicial()) afd.setEstadoInicial(d.getText());
+                    if (d.isFinal()) afd.getEstadosFinais().add(d.getText());
+                }
+
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
@@ -55,7 +58,11 @@ public class AFDInputController implements Initializable {
         btnAddEdge.setOnAction(e -> {
             try {
                 InputArestaDialog d = (InputArestaDialog) App.showDialog("InputArestaDialog", "Nova Aresta");
-                afd.getGrafo().addDirEdge(d.getAresta());
+                if(d.getAresta() != null){
+                    if(afd.getGrafo().getNodes().contains(d.getAresta().getA()) &&
+                            afd.getGrafo().getNodes().contains(d.getAresta().getB()))
+                        afd.getGrafo().addDirEdge(d.getAresta());
+                }
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
