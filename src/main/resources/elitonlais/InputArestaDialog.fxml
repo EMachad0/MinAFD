@@ -4,10 +4,10 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane fx:id="fundo" prefHeight="249.0" prefWidth="235.0" stylesheets="@/css/PopUp.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.InputArestaDialog">
-    <Button fx:id="btnOk" layoutX="89.0" layoutY="212.0" mnemonicParsing="false" text="Button" />
+    <Button fx:id="btnOk" layoutX="89.0" layoutY="209.0" mnemonicParsing="false" text="Inserir" />
     <TextField fx:id="tf1" layoutX="23.0" layoutY="14.0" prefHeight="30.0" prefWidth="193.0" promptText="Estado de saida" />
-    <TextField fx:id="tf2" layoutX="23.0" layoutY="57.0" prefHeight="30.0" prefWidth="193.0" promptText="Estado de entrada" />
-    <TextField fx:id="tf3" layoutX="23.0" layoutY="98.0" prefHeight="30.0" prefWidth="193.0" promptText="Símbolo lido da fita" />
-    <TextField fx:id="tf4" layoutX="23.0" layoutY="136.0" prefHeight="30.0" prefWidth="193.0" promptText="Símbolo lido da pilha" />
-    <TextField fx:id="tf5" layoutX="23.0" layoutY="173.0" prefHeight="30.0" prefWidth="193.0" promptText="Símbolo escrito na pilha" />
+    <TextField fx:id="tf2" layoutX="23.0" layoutY="52.0" prefHeight="30.0" prefWidth="193.0" promptText="Estado de entrada" />
+    <TextField fx:id="tf3" layoutX="23.0" layoutY="90.0" prefHeight="30.0" prefWidth="193.0" promptText="Símbolo lido da fita" />
+    <TextField fx:id="tf4" layoutX="23.0" layoutY="128.0" prefHeight="30.0" prefWidth="193.0" promptText="Símbolo lido da pilha" />
+    <TextField fx:id="tf5" layoutX="23.0" layoutY="165.0" prefHeight="30.0" prefWidth="193.0" promptText="Símbolo escrito na pilha" />
 </AnchorPane>

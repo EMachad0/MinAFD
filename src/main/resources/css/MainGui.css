@@ -16,6 +16,7 @@
     -fx-font-size: 40;
     -fx-font-family: "Roboto Condensed";
 }
+
 .label{
     -fx-text-fill: black;
     -fx-font-size: 25;
