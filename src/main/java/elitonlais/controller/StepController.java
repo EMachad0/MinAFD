@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
 public class StepController implements Initializable {
 
@@ -42,16 +43,16 @@ public class StepController implements Initializable {
         boolean res = s.testa(fita.substring(0, cont));
         if (cont == fita.length()) labelResultado.setText("Palavra " + ((res)? "":"Não ") + "Aceita");
         else labelResultado.setText("");
+
         atualizaImagem();
+        atualizaPilha();
     }
 
-    public void setFita(String fita) {
-        this.fita = fita;
-    }
+    public void atualizaPilha() {
+        Stack<Character> pilha = s.getPilha();
 
-    public void setSimulador(Simulador s) {
-        this.s = s;
-        atualizaImagem();
+        vBox.getChildren().clear();
+        pilha.forEach(c -> vBox.getChildren().add(0, new Label(String.valueOf(c))));
     }
 
     public void atualizaImagem() {
@@ -62,5 +63,14 @@ public class StepController implements Initializable {
         imageView.setPreserveRatio(true);
         imageView.setSmooth(true);
         imageView.setCache(true);
+    }
+
+    public void setFita(String fita) {
+        this.fita = fita;
+    }
+
+    public void setSimulador(Simulador s) {
+        this.s = s;
+        atualizaImagem();
     }
 }
