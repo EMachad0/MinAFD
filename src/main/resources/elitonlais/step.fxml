@@ -10,8 +10,11 @@
     <Button fx:id="btnNext" layoutX="143.0" layoutY="40.0" mnemonicParsing="false" prefHeight="50" prefWidth="50" text="&gt;" />
     <Button fx:id="btnEnd" layoutX="1152.0" layoutY="719.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Terminar" />
     <ImageView fx:id="imageView" fitHeight="563.0" fitWidth="790.0" layoutX="80.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" />
-    <ScrollPane layoutX="1053.0" layoutY="106.0" prefHeight="542.0" prefWidth="230.0" stylesheets="@/css/Grid.css">
-        <VBox fx:id="vBox" prefHeight="527.0" prefWidth="214.0" />
+    <ScrollPane hbarPolicy="NEVER" layoutX="1111.0" layoutY="103.0" prefHeight="542.0" stylesheets="@/css/Grid.css">
+        <VBox fx:id="vBox" alignment="BOTTOM_CENTER" prefHeight="519.0">
+         <children>
+            <Label minHeight="50.0" prefWidth="100.0" text="Label" />
+         </children></VBox>
     </ScrollPane>
     <Label alignment="CENTER" layoutX="1053.0" layoutY="40.0" prefHeight="35.0" prefWidth="230.0" text="Pilha" />
     <Label fx:id="labelResultado" layoutX="105.0" layoutY="682.0" prefHeight="50.0" prefWidth="349.0" text="Label" />
