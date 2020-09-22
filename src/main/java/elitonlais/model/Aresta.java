@@ -1,5 +1,7 @@
 package elitonlais.model;
 
+import java.util.Objects;
+
 public class Aresta implements Comparable<Aresta> {
 
     private String a;
@@ -61,12 +63,33 @@ public class Aresta implements Comparable<Aresta> {
     }
 
     @Override
-    public int compareTo(Aresta a) {
-        if (fi.equals(a.fi)) {
-            if (se.equals(a.se)) {
-                return th.compareTo(a.th);
-            } else return se.compareTo(a.se);
-        } else return fi.compareTo(a.fi);
+    public int compareTo(Aresta ar) {
+        if (a.equals(ar.getA())) {
+            if (b.equals(ar.getB())) {
+                if (fi.equals(ar.fi)) {
+                    if (se.equals(ar.se)) {
+                        return th.compareTo(ar.th);
+                    } else return se.compareTo(ar.se);
+                } else return fi.compareTo(ar.fi);
+            } else return b.compareTo(ar.b);
+        } else return a.compareTo(ar.a);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Aresta aresta = (Aresta) o;
+        return Objects.equals(a, aresta.a) &&
+                Objects.equals(b, aresta.b) &&
+                Objects.equals(fi, aresta.fi) &&
+                Objects.equals(se, aresta.se) &&
+                Objects.equals(th, aresta.th);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(a, b, fi, se, th);
     }
 
     @Override
