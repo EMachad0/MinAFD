@@ -1,8 +1,3 @@
-@font-face {
-    font-family: JetBrainsMono;
-    src: url('/fonts/JetBrainsMono-Regular.ttf');
-}
-
 .scroll-pane {
     -fx-background-color: transparent;
     -fx-border-width: 10;
