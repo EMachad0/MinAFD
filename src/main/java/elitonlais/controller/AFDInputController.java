@@ -2,7 +2,6 @@ package elitonlais.controller;
 
 import elitonlais.App;
 import elitonlais.model.AFD;
-import elitonlais.model.Aresta;
 import elitonlais.model.Grafo;
 import elitonlais.model.Simulador;
 import elitonlais.tests.Automatos;
@@ -42,7 +41,7 @@ public class AFDInputController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         afd = new AFD(null,  new TreeSet<>(), new Grafo(), new TreeSet<>(new StringSizeFirstComparator()));
-        afd = Automatos.atutomatoDoProfessor();
+        afd = Automatos.automatoDoProfessor();
         atualizaImagem();
 
         btnAddNode.setOnAction(e -> {
