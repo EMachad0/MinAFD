@@ -119,5 +119,19 @@ public class AFDInputController implements Initializable {
         imageView.setPreserveRatio(true);
         imageView.setSmooth(true);
         imageView.setCache(true);
+        centerImage();
+    }
+
+    public void centerImage() {
+        Image img = imageView.getImage();
+        if (img != null) {
+            double ratioX = imageView.getFitWidth() / img.getWidth();
+            double ratioY = imageView.getFitHeight() / img.getHeight();
+            double reducCoeff = Math.min(ratioX, ratioY);
+            double w = img.getWidth() * reducCoeff;
+            double h = img.getHeight() * reducCoeff;
+            imageView.setX((imageView.getFitWidth() - w) / 2);
+            imageView.setY((imageView.getFitHeight() - h) / 2);
+        }
     }
 }

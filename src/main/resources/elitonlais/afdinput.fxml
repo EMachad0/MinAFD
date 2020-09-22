@@ -3,24 +3,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="mainPane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@/css/MainGui.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.AFDInputController">
-   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#031c45" height="586.0" layoutX="518.0" layoutY="28.0" stroke="BLACK" strokeType="INSIDE" width="816.0" />
    <TextField fx:id="tfFita" layoutX="52.0" layoutY="290.0" prefHeight="26.0" prefWidth="437.0" promptText="Entre com uma palavra para ser testada" />
    <Label fx:id="mainTitulo" layoutX="52.0" layoutY="47.0" prefHeight="165.0" prefWidth="419.0" text=" Simulador de Autômatos&#10;com Pilha Determinísticos" />
    <ScrollPane hbarPolicy="NEVER" layoutX="52.0" layoutY="397.0">
-      <content>
-         <TextArea fx:id="taInput" prefHeight="200.0" prefWidth="200.0" promptText="Entre com uma palavra para ser testada por linha" />
-      </content>
+      <TextArea fx:id="taInput" prefHeight="200.0" prefWidth="200.0" promptText="Entre com uma palavra para ser testada por linha" />
    </ScrollPane>
    <ScrollPane hbarPolicy="NEVER" layoutX="289.0" layoutY="397.0">
-      <content>
-         <TextFlow fx:id="taOutput" prefHeight="200.0" prefWidth="200.0" />
-      </content>
+      <TextFlow fx:id="taOutput" prefHeight="200.0" prefWidth="200.0" />
    </ScrollPane>
-   <ImageView fx:id="imageView" fitHeight="586.0" fitWidth="804.0" layoutX="524.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+   <StackPane fx:id="pane" layoutX="524.0" layoutY="34.0" prefHeight="586.0" prefWidth="804.0" stylesheets="@/css/Image.css">
+      <ImageView fx:id="imageView" fitHeight="586.0" fitWidth="804.0" pickOnBounds="true" preserveRatio="true" smooth="false"/>
+   </StackPane>
    <Label fx:id="creditos" layoutX="26.0" layoutY="729.0" prefHeight="26.0" prefWidth="513.0" text="Trabalho desenvolvido para a disciplina de LFA por Eliton Machado e Laís Van Vossen" />
    <Button fx:id="btnAddNode" layoutX="683.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Adicionar Estado" />
    <Button fx:id="btnAddEdge" layoutX="874.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Adicionar Transição" />

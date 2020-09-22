@@ -3,23 +3,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 
-<AnchorPane fx:id="painel" prefHeight="768.0" prefWidth="1137.0" stylesheets="@/css/Step.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.StepController">
-    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#031c45" height="576.0" layoutX="74.0" layoutY="97.0" stroke="BLACK" strokeType="INSIDE" width="803.0" />
-    <ImageView fx:id="imageView" fitHeight="563.0" fitWidth="790.0" layoutX="80.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" />
+<AnchorPane fx:id="painel" prefHeight="713.0" prefWidth="1128.0" stylesheets="@/css/Step.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.StepController">
+    <StackPane fx:id="pane" layoutX="74.0" layoutY="96.0" prefHeight="586.0" prefWidth="804.0" stylesheets="@/css/Image.css">
+        <ImageView fx:id="imageView" fitHeight="586.0" fitWidth="804.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
+    </StackPane>
     <Button fx:id="btnAnte" layoutX="79.0" layoutY="34.0" mnemonicParsing="false" prefHeight="50" prefWidth="50" text="&lt;" />
-    <Label fx:id="labelFita" contentDisplay="CENTER" layoutX="219.0" layoutY="34.0" prefHeight="50" prefWidth="652.0" text="fita" textAlignment="CENTER" />
+    <Label fx:id="labelFita" contentDisplay="CENTER" layoutX="219.0" layoutY="34.0" prefHeight="50" prefWidth="652.0" text="Fita" textAlignment="CENTER" />
     <Button fx:id="btnNext" layoutX="152.0" layoutY="34.0" mnemonicParsing="false" prefHeight="50" prefWidth="50" text="&gt;" />
-    <Button fx:id="btnEnd" layoutX="672.0" layoutY="690.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Terminar" />
+    <Button fx:id="btnEnd" layoutX="906.0" layoutY="706.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Terminar" />
     <Label alignment="CENTER" layoutX="942.0" layoutY="42.0" prefHeight="35.0" prefWidth="102.0" text="    Pilha" />
-    <Label fx:id="labelResultado" layoutX="74.0" layoutY="690.0" prefHeight="50.0" prefWidth="375.0" text="" />
-    <ScrollPane hbarPolicy="NEVER" layoutX="945.0" layoutY="96.0" prefHeight="570.0" stylesheets="@/css/Grid.css">
-      <content>
-           <VBox fx:id="vBox" alignment="BOTTOM_CENTER" prefHeight="519.0" prefWidth="100.0">
-            <children>
-               <Label minHeight="50.0" prefWidth="100.0" text="Label" />
-            </children>
-         </VBox>
-      </content></ScrollPane>
+    <Label fx:id="labelResultado" layoutX="74.0" layoutY="705.0" prefHeight="35.0" prefWidth="375.0" />
+    <ScrollPane hbarPolicy="NEVER" layoutX="945.0" layoutY="96.0" prefHeight="602.0" prefWidth="122.0" stylesheets="@/css/Grid.css">
+        <VBox fx:id="vBox" alignment="BOTTOM_CENTER" prefHeight="571.0" prefWidth="100.0">
+            <Label minHeight="50.0" prefWidth="100.0" text="Label" />
+        </VBox>
+    </ScrollPane>
 </AnchorPane>
