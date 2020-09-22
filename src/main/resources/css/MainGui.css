@@ -1,7 +1,29 @@
+@font-face {
+    font-family: JetBrainsMono;
+    src: url('fonts/JetBrainsMono-Regular.ttf');
+}
+
 .button{
     -fx-background-color: #031c45;
     /*-fx-font-style: italic;*/
     -fx-text-fill: white;
+}
+
+.label{
+    -fx-text-fill: black;
+    -fx-font-size: 25;
+    -fx-font-family: "Roboto Condensed";
+}
+
+.text-field, .text-area, #taOutput {
+    -fx-background-color: white;
+    -fx-border-width: 2;
+    -fx-border-color: #031c45;
+}
+
+#taOutput {
+    -fx-text-alignment: center;
+    -fx-font-size: 22;
 }
 
 #mainPane{
@@ -17,22 +39,7 @@
     -fx-font-family: "Roboto Condensed";
 }
 
-.label{
-    -fx-text-fill: black;
-    -fx-font-size: 25;
-    -fx-font-family: "Roboto Condensed";
-}
-
-.text-field, .text-area{
-    -fx-border-width: 2;
-    -fx-border-color: #031c45;
-}
-
 #creditos{
     -fx-font-size: 15;
     -fx-font-style: italic;
-}
-
-.scroll-pane{
-    -fx-background-color: #4d84e3;
 }

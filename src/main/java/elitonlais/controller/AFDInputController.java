@@ -14,6 +14,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -31,7 +33,7 @@ public class AFDInputController implements Initializable {
     @FXML public ImageView imageView;
     @FXML public TextField tfFita;
     @FXML public TextArea taInput;
-    @FXML public TextArea taOutput;
+    @FXML public TextFlow taOutput;
 
     private AFD afd;
 
@@ -75,22 +77,33 @@ public class AFDInputController implements Initializable {
         });
 
         btnExecute.setOnAction(e -> {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("step.fxml"));
+            Simulador simulador = new Simulador(afd);
+            String[] inputs = taInput.getText().split("\n");
+            for (String input : inputs) {
+                boolean res = simulador.testa(input);
+                Text t = new Text("Palavra " + ((res)? "":"Não ") + "Aceita\n");
+                t.setId(((res)? "":"nao") + "Aceito");
+                t.setStyle("-fx-fill: " + ((res)? "#3ae073":"#e03a5b"));
+                taOutput.getChildren().add(t);
+            }
 
-            try {
-                Parent parent = loader.load();
+            if (!tfFita.getText().equals("")) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(App.class.getResource("step.fxml"));
+                try {
+                    Parent parent = loader.load();
 
-                ((StepController) loader.getController()).setFita(tfFita.getText());
-                ((StepController) loader.getController()).setSimulador(new Simulador(afd));
-                Scene scene = new Scene(parent);
-                Stage stage = new Stage();
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setScene(scene);
-                stage.setTitle("Visualização passo a passo");
-                stage.showAndWait();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
+                    ((StepController) loader.getController()).setFita(tfFita.getText());
+                    ((StepController) loader.getController()).setSimulador(new Simulador(afd));
+                    Scene scene = new Scene(parent);
+                    Stage stage = new Stage();
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.setScene(scene);
+                    stage.setTitle("Visualização passo a passo");
+                    stage.showAndWait();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
             }
         });
     }
