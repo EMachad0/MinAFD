@@ -77,7 +77,7 @@ public class AFD {
         if (estadoInicial != null) g = g.with(node("").with(Shape.POINT).link(to(nodes.get(estadoInicial))));
 
         try {
-            Graphviz.fromGraph(g).width(790).height(563).render(Format.PNG).toFile(new File("graph.png"));
+            Graphviz.fromGraph(g).width(804).render(Format.PNG).toFile(new File("graph.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

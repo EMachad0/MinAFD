@@ -29,6 +29,10 @@ public class Simulador {
     }
 
     public boolean testa(String fita) {
+        return testa(fita, true);
+    }
+
+    public boolean testa(String fita, boolean fitaCompleta) {
         novi = new TreeSet<>(new StringSizeFirstComparator());
         arvi = new TreeSet<>();
         pilha = new Stack<>();
@@ -58,7 +62,7 @@ public class Simulador {
             }
         }
 
-        while (terminouFita && !afd.getEstadosFinais().contains(atual)) {
+        while (fitaCompleta && terminouFita && !afd.getEstadosFinais().contains(atual)) {
             boolean achouAresta = false;
             for (Aresta ar : afd.getGrafo().getAdj().get(atual)) {
                 if ((ar.getFi() == 'ε' || ar.getFi() == '?') && (ar.getSe() == 'ε' || (ar.getSe() == '?' && pilha.isEmpty()))) {
@@ -116,7 +120,7 @@ public class Simulador {
         if (afd.getEstadoInicial() != null) g = g.with(node("").with(Shape.POINT).link(to(nodes.get(afd.getEstadoInicial()))));
 
         try {
-            Graphviz.fromGraph(g).width(790).height(563).render(Format.PNG).toFile(new File("graph.png"));
+            Graphviz.fromGraph(g).width(804).render(Format.PNG).toFile(new File("graph.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
