@@ -14,15 +14,19 @@
     -fx-font-family: "Roboto Condensed";
 }
 
-.text-field, .text-area, #taOutput {
+.text-area{
+    -fx-border-width: 0;
+    -fx-border-color: #031c45;
+}
+
+.text-field{
     -fx-background-color: white;
     -fx-border-width: 2;
     -fx-border-color: #031c45;
 }
 
-#taOutput {
-    -fx-text-alignment: center;
-    -fx-font-size: 22;
+#taOutput{
+    -fx-border-width: 0;
 }
 
 #mainPane{
@@ -41,4 +45,21 @@
 #creditos{
     -fx-font-size: 15;
     -fx-font-style: italic;
+}
+
+.scroll-pane{
+    -fx-border-width: 0;
+    -fx-border-color: #031c45;
+}
+
+#scOutput{
+    -fx-border-width: 3;
+    -fx-border-color: #031c45;
+}
+
+#taInput {
+    -fx-text-alignment: center;
+    -fx-font-size: 12;
+    -fx-border-width: 3;
+    -fx-border-color: #031c45;
 }
