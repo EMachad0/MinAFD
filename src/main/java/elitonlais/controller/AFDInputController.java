@@ -79,6 +79,7 @@ public class AFDInputController implements Initializable {
         btnExecute.setOnAction(e -> {
             Simulador simulador = new Simulador(afd);
             String[] inputs = taInput.getText().split("\n");
+            taOutput.getChildren().clear();
             for (String input : inputs) {
                 boolean res = simulador.testa(input);
                 Text t = new Text("Palavra " + ((res)? "":"Não ") + "Aceita\n");
