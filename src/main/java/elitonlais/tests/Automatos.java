@@ -23,4 +23,13 @@ public class Automatos {
         afd.getGrafo().addDirEdge(new Aresta("q0", "q2", '?', '?', 'ε'));
         return afd;
     }
+
+    public static AFD as() {
+        AFD afd = new AFD(null,  new TreeSet<>(), new Grafo(), new TreeSet<>(new StringSizeFirstComparator()));
+        afd.getGrafo().addNode("A");
+        afd.setEstadoInicial("A");
+        afd.getEstadosFinais().add("A");
+        afd.getGrafo().addDirEdge(new Aresta("A", "A", 'a', 'ε', 'ε'));
+        return afd;
+    }
 }
