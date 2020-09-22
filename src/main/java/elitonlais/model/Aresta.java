@@ -8,9 +8,9 @@ public class Aresta implements Comparable<Aresta> {
     private String b;
     private Character fi;
     private Character se;
-    private Character th;
+    private String th;
 
-    public Aresta(String a, String b, char fi, char se, char th) {
+    public Aresta(String a, String b, char fi, char se, String th) {
         this.a = a;
         this.b = b;
         this.fi = fi;
@@ -18,8 +18,8 @@ public class Aresta implements Comparable<Aresta> {
         this.th = th;
     }
 
-    public boolean compareValor(char fi, char se, char th) {
-        return this.fi == fi && this.se == se && this.th == th;
+    public boolean compareValor(char fi, char se, String th) {
+        return this.fi == fi && this.se == se && this.th.equals(th);
     }
 
     public String getA() {
@@ -38,7 +38,7 @@ public class Aresta implements Comparable<Aresta> {
         return se;
     }
 
-    public char getTh() {
+    public String getTh() {
         return th;
     }
 
@@ -58,7 +58,7 @@ public class Aresta implements Comparable<Aresta> {
         this.se = se;
     }
 
-    public void setTh(Character th) {
+    public void setTh(String th) {
         this.th = th;
     }
 

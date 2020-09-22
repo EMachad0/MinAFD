@@ -16,11 +16,11 @@ public class Automatos {
         afd.getGrafo().addNode("q2");
         afd.setEstadoInicial("q0");
         afd.getEstadosFinais().add("q2");
-        afd.getGrafo().addDirEdge(new Aresta("q0", "q0", 'a', 'ε', 'B'));
-        afd.getGrafo().addDirEdge(new Aresta("q0", "q1", 'b', 'B', 'ε'));
-        afd.getGrafo().addDirEdge(new Aresta("q1", "q1", 'b', 'B', 'ε'));
-        afd.getGrafo().addDirEdge(new Aresta("q1", "q2", '?', '?', 'ε'));
-        afd.getGrafo().addDirEdge(new Aresta("q0", "q2", '?', '?', 'ε'));
+        afd.getGrafo().addDirEdge(new Aresta("q0", "q0", 'a', 'ε', "B"));
+        afd.getGrafo().addDirEdge(new Aresta("q0", "q1", 'b', 'B', "ε"));
+        afd.getGrafo().addDirEdge(new Aresta("q1", "q1", 'b', 'B', "ε"));
+        afd.getGrafo().addDirEdge(new Aresta("q1", "q2", '?', '?', "ε"));
+        afd.getGrafo().addDirEdge(new Aresta("q0", "q2", '?', '?', "ε"));
         return afd;
     }
 
@@ -29,7 +29,7 @@ public class Automatos {
         afd.getGrafo().addNode("A");
         afd.setEstadoInicial("A");
         afd.getEstadosFinais().add("A");
-        afd.getGrafo().addDirEdge(new Aresta("A", "A", 'a', 'ε', 'ε'));
+        afd.getGrafo().addDirEdge(new Aresta("A", "A", 'a', 'ε', "ε"));
         return afd;
     }
 }

@@ -26,7 +26,7 @@ public class InputArestaDialog implements Initializable {
         btnOk.setOnAction(evt -> {
             char fi = (tf3.getText().isEmpty())? 'ε':tf3.getText().charAt(0);
             char se = (tf4.getText().isEmpty())? 'ε':tf4.getText().charAt(0);
-            char th = (tf5.getText().isEmpty())? 'ε':tf5.getText().charAt(0);
+            String th = (tf5.getText().isEmpty())? "ε":tf5.getText();
             aresta = new Aresta(tf1.getText(), tf2.getText(), fi, se, th);
             App.closeStage(evt);
         });

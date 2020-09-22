@@ -48,7 +48,7 @@ public class Grafo {
         return getEdge(p.getFi(), p.getSe());
     }
 
-    public String getNode(String node, char fi, char se, char th) {
+    public String getNode(String node, char fi, char se, String th) {
         if (!containNode(node)) return null;
         for (Aresta a : adj.get(node)) {
             if (a.compareValor(fi, se, th)) return a.getB();
@@ -60,7 +60,7 @@ public class Grafo {
         return nodes.contains(node);
     }
 
-    public boolean containTransition(String node, char fi, char se, char th) {
+    public boolean containTransition(String node, char fi, char se, String th) {
         if (!containNode(node)) return false;
         for (Aresta a : adj.get(node)) {
             if (a.compareValor(fi, se, th)) return true;
