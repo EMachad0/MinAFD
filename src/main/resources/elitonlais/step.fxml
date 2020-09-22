@@ -3,19 +3,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.StepController">
-    <Button fx:id="btnAnte" layoutX="80.0" layoutY="40.0" mnemonicParsing="false" prefHeight="50" prefWidth="50" text="&lt;" />
-    <Label fx:id="labelFita" contentDisplay="CENTER" layoutX="203.0" layoutY="40.0" prefHeight="50" prefWidth="669.0" text="fita" textAlignment="CENTER" />
-    <Button fx:id="btnNext" layoutX="143.0" layoutY="40.0" mnemonicParsing="false" prefHeight="50" prefWidth="50" text="&gt;" />
-    <Button fx:id="btnEnd" layoutX="1152.0" layoutY="719.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Terminar" />
+<AnchorPane fx:id="painel" prefHeight="768.0" prefWidth="1137.0" stylesheets="@/css/Step.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitonlais.controller.StepController">
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#031c45" height="576.0" layoutX="74.0" layoutY="97.0" stroke="BLACK" strokeType="INSIDE" width="803.0" />
     <ImageView fx:id="imageView" fitHeight="563.0" fitWidth="790.0" layoutX="80.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" />
-    <ScrollPane hbarPolicy="NEVER" layoutX="1111.0" layoutY="103.0" prefHeight="542.0" stylesheets="@/css/Grid.css">
-        <VBox fx:id="vBox" alignment="BOTTOM_CENTER" prefHeight="519.0">
-         <children>
-            <Label minHeight="50.0" prefWidth="100.0" text="Label" />
-         </children></VBox>
-    </ScrollPane>
-    <Label alignment="CENTER" layoutX="1053.0" layoutY="40.0" prefHeight="35.0" prefWidth="230.0" text="Pilha" />
-    <Label fx:id="labelResultado" layoutX="105.0" layoutY="682.0" prefHeight="50.0" prefWidth="349.0" text="Label" />
+    <Button fx:id="btnAnte" layoutX="79.0" layoutY="34.0" mnemonicParsing="false" prefHeight="50" prefWidth="50" text="&lt;" />
+    <Label fx:id="labelFita" contentDisplay="CENTER" layoutX="219.0" layoutY="34.0" prefHeight="50" prefWidth="652.0" text="fita" textAlignment="CENTER" />
+    <Button fx:id="btnNext" layoutX="152.0" layoutY="34.0" mnemonicParsing="false" prefHeight="50" prefWidth="50" text="&gt;" />
+    <Button fx:id="btnEnd" layoutX="672.0" layoutY="690.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Terminar" />
+    <Label alignment="CENTER" layoutX="942.0" layoutY="42.0" prefHeight="35.0" prefWidth="102.0" text="    Pilha" />
+    <Label fx:id="labelResultado" layoutX="74.0" layoutY="690.0" prefHeight="50.0" prefWidth="375.0" text="" />
+    <ScrollPane hbarPolicy="NEVER" layoutX="945.0" layoutY="96.0" prefHeight="570.0" stylesheets="@/css/Grid.css">
+      <content>
+           <VBox fx:id="vBox" alignment="BOTTOM_CENTER" prefHeight="519.0" prefWidth="100.0">
+            <children>
+               <Label minHeight="50.0" prefWidth="100.0" text="Label" />
+            </children>
+         </VBox>
+      </content></ScrollPane>
 </AnchorPane>
