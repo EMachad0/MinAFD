@@ -40,7 +40,7 @@ public class StepController implements Initializable {
     public void mudaPasso(int passo) {
         this.cont = Math.max(0, Math.min(fita.length(), passo));
         labelFita.setText(fita.substring(0, cont));
-        boolean res = s.testa(fita.substring(0, cont));
+        boolean res = s.testa(fita.substring(0, cont), fita.length() == cont);
         if (cont == fita.length()) labelResultado.setText("Palavra " + ((res)? "":"Não ") + "Aceita");
         else labelResultado.setText("");
         if(res) labelResultado.setStyle("-fx-text-fill: #3ae073");

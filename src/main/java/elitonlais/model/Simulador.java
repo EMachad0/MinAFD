@@ -29,6 +29,10 @@ public class Simulador {
     }
 
     public boolean testa(String fita) {
+        return testa(fita, true);
+    }
+
+    public boolean testa(String fita, boolean fitaCompleta) {
         novi = new TreeSet<>(new StringSizeFirstComparator());
         arvi = new TreeSet<>();
         pilha = new Stack<>();
@@ -58,7 +62,7 @@ public class Simulador {
             }
         }
 
-        while (terminouFita && !afd.getEstadosFinais().contains(atual)) {
+        while (fitaCompleta && terminouFita && !afd.getEstadosFinais().contains(atual)) {
             boolean achouAresta = false;
             for (Aresta ar : afd.getGrafo().getAdj().get(atual)) {
                 if ((ar.getFi() == 'ε' || ar.getFi() == '?') && (ar.getSe() == 'ε' || (ar.getSe() == '?' && pilha.isEmpty()))) {
