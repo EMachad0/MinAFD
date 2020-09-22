@@ -41,7 +41,7 @@ public class AFDInputController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         afd = new AFD(null,  new TreeSet<>(), new Grafo(), new TreeSet<>(new StringSizeFirstComparator()));
-        afd = Automatos.automatoDoProfessor();
+        afd = Automatos.as();
         atualizaImagem();
 
         btnAddNode.setOnAction(e -> {
