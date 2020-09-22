@@ -43,6 +43,8 @@ public class StepController implements Initializable {
         boolean res = s.testa(fita.substring(0, cont));
         if (cont == fita.length()) labelResultado.setText("Palavra " + ((res)? "":"Não ") + "Aceita");
         else labelResultado.setText("");
+        if(res) labelResultado.setStyle("-fx-text-fill: #3ae073");
+        else labelResultado.setStyle("-fx-text-fill: #e03a5b");
 
         atualizaImagem();
         atualizaPilha();
