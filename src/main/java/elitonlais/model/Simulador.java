@@ -50,7 +50,7 @@ public class Simulador {
             for (Aresta ar : afd.getGrafo().getAdj().get(atual)) {
                 if (ar.getFi() == c && (ar.getSe() == 'ε' || ar.getSe() == topo || (ar.getSe() == '?' && pilha.isEmpty()))) {
                     if (ar.getSe() != 'ε' && ar.getSe() != '?') pilha.pop();
-                    if (ar.getTh() != 'ε') pilha.push(ar.getTh());
+                    for (char th : ar.getTh().toCharArray()) if (th != 'ε') pilha.push(th);
                     atual = ar.getB();
                     marca(atual);
                     marca(ar);
