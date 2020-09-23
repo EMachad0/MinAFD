@@ -61,7 +61,7 @@ public class AFDInputController implements Initializable {
 
         btnAddEdge.setOnAction(e -> {
             try {
-                InputArestaDialog d = (InputArestaDialog) App.showDialog("InputArestaDialog", "Nova Aresta");
+                InputArestaDialog d = (InputArestaDialog) App.showDialog("InputArestaDialog", "Nova Transição");
                 if(d.getAresta() != null){
                     if(afd.getGrafo().getNodes().contains(d.getAresta().getA()) &&
                             afd.getGrafo().getNodes().contains(d.getAresta().getB()))
