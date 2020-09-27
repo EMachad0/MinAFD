@@ -12,10 +12,10 @@
       <TextArea fx:id="taInput" prefHeight="204.0" prefWidth="200.0" promptText="Entre com uma palavra para ser testada por linha" />
    </ScrollPane>
    <ScrollPane fx:id="scOutput" hbarPolicy="NEVER" layoutX="289.0" layoutY="397.0">
-      <TextFlow fx:id="taOutput" prefHeight="204.0" prefWidth="200.0" />
+      <TextFlow fx:id="taOutput" prefHeight="196.0" prefWidth="200.0" />
    </ScrollPane>
    <StackPane fx:id="pane" layoutX="524.0" layoutY="34.0" prefHeight="586.0" prefWidth="804.0" stylesheets="@/css/Image.css">
-      <ImageView fx:id="imageView" fitHeight="586.0" fitWidth="804.0" pickOnBounds="true" preserveRatio="true" smooth="false"/>
+      <ImageView fx:id="imageView" fitHeight="586.0" fitWidth="804.0" pickOnBounds="true" preserveRatio="true" smooth="false" />
    </StackPane>
    <Label fx:id="creditos" layoutX="26.0" layoutY="729.0" prefHeight="26.0" prefWidth="513.0" text="Trabalho desenvolvido para a disciplina de LFA por Eliton Machado e Laís Van Vossen" />
    <Button fx:id="btnAddNode" layoutX="683.0" layoutY="648.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" text="Adicionar Estado" />
