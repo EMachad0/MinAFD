@@ -24,7 +24,7 @@ public class App extends Application {
         App.stage = stage;
         scene = new Scene(loadFXML("afdinput"));
         stage.setScene(scene);
-        stage.setTitle("Simulador de AFD");
+        stage.setTitle("Simulador de AP");
         stage.show();
     }
 
