@@ -4,7 +4,6 @@ import elitonlais.App;
 import elitonlais.model.AFD;
 import elitonlais.model.Grafo;
 import elitonlais.model.Simulador;
-import elitonlais.tests.Automatos;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,7 +40,7 @@ public class AFDInputController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         afd = new AFD(null,  new TreeSet<>(), new Grafo(), new TreeSet<>(new StringSizeFirstComparator()));
-        afd = Automatos.automatoDoProfessor();
+        // afd = Automatos.automatoDoProfessor();
         atualizaImagem();
 
         btnAddNode.setOnAction(e -> {
